@@ -2,7 +2,7 @@
 
 ## Project Goal
 
-This backend layer reads data from a 3rd party **GraphQL API** (Tarkov.dev), stores it in a **Cosmos DB NoSQL** database, and then serves it through a **REST API** to the frontend (Tarkony-react-frontend). In later phases, user management and a “shopping list” feature will be implemented.
+This backend layer reads data from a 3rd party **GraphQL API** (Tarkov.dev), stores it in a **Cosmos DB NoSQL** database, and then serves it through a **REST API** to the frontend [Tarkony-react-frontend](https://github.com/Sz-Daniel/Tarkony-react-frontend). In later phases, user management and a “shopping list” feature will be implemented.
 
 ---
 
