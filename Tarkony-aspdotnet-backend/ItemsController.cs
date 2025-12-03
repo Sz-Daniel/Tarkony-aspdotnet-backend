@@ -18,7 +18,7 @@ namespace MyApi.Controllers
         }
 
         [HttpGet("bulk")]
-        public async Task<IActionResult> GetBulkItems()
+        public async Task<IActionResult> GetItemsData()
         {
             
             _logger.LogInformation("Bulk GraphQL fetch started");
@@ -26,6 +26,16 @@ namespace MyApi.Controllers
             _logger.LogInformation("Bulk GraphQL fetch finished, count={Count}", items.Count);
 
             return Ok(items); 
+        }
+
+        [HttpGet("Categories")]
+        public async Task<IActionResult> GetCategoriesData()
+        {
+            _logger.LogInformation("Categories GraphQL fetch started");
+            var categories = await _service.FetchCategoriesAsync();
+            _logger.LogInformation("Categories GraphQL fetch finished, count={Count}", categories.Count);
+
+            return Ok(categories); 
         }
 
     }

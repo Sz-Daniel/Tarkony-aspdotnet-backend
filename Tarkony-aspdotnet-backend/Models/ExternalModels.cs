@@ -25,3 +25,21 @@ public class Category
 {
     public string? NormalizedName { get; set; }
 }
+public class CategoriesQueryType
+{
+    public string? id { get; set; }
+    public string? name { get; set; }
+    public string? normalizedName { get; set; }
+    public List<Children>? children {get;set;}
+    public Parent? parent {get;set;}
+}
+
+public class Children
+{
+    public string? normalizedName { get; set; }
+}
+
+public class Parent
+{
+    public string? normalizedName { get; set; }
+}
