@@ -16,10 +16,6 @@ builder.Services.AddHttpClient("GraphQLClient", client =>
     client.BaseAddress = new Uri("https://api.tarkov.dev/graphql");
     client.DefaultRequestHeaders.Add("Accept", "application/json");
 });
-// In-memory caching for lightweight local usage
-builder.Services.AddMemoryCache();
-
-// GraphQL service wrapper registered for DI
 builder.Services.AddScoped<GraphQLService>();
 
 var app = builder.Build();
