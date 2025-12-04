@@ -13,7 +13,28 @@ public class GraphQLService
         _client = factory.CreateClient("GraphQLClient");
     }
 
-    public async Task<List<CategoriesQueryType>> FetchCategoriesAsync()
+    public async Task<List<Item>> FetchItemsAsync()
+    {
+        var request = new GraphQLRequest
+        {
+            Query = queries["ItemBaseQuery"]
+        };
+
+        var response = await _client.PostAsJsonAsync("", request);
+
+        if (!response.IsSuccessStatusCode)
+            throw new Exception($"GraphQL HTTP error: {response.StatusCode}");
+
+        var json = await response.Content.ReadFromJsonAsync<GraphQLResponse<ItemBaseModel>>();
+
+        if (json?.Errors != null && json.Errors.Any())
+            throw new Exception($"GraphQL errors: {string.Join(';', json.Errors.Select(e => e.Message))}");
+
+        // Itt már csak a lista kell
+        return json?.Data?.Items ?? new List<Item>();
+    }
+
+    public async Task<List<Categories>> FetchCategoriesAsync()
     {
         var request = new GraphQLRequest
         {
@@ -25,36 +46,17 @@ public class GraphQLService
         if (!response.IsSuccessStatusCode)
             throw new Exception($"GraphQL HTTP error: {response.StatusCode}");
 
-        var json = await response.Content.ReadFromJsonAsync<GraphQLResponse<CategoriesListQueryType>>();
-        if (json?.Errors != null && json.Errors.Any())
-            throw new Exception($"GraphQL errors: {string.Join(';', json.Errors.Select(e => e.Message))}");
-
-        return json?.Data.itemCategories ?? new List<CategoriesQueryType>();
-    }
-
-    public async Task<List<ItemBaseQueryType>> FetchItemsAsync()
-    {
-        var request = new GraphQLRequest
-        {
-            Query = queries["ItemsQuery"]
-        };
-
-        var response = await _client.PostAsJsonAsync("", request);
-
-        if (!response.IsSuccessStatusCode)
-            throw new Exception($"GraphQL HTTP error: {response.StatusCode}");
-
-        var json = await response.Content.ReadFromJsonAsync<GraphQLResponse<ItemBaseListQueryType>>();
+        var json = await response.Content.ReadFromJsonAsync<GraphQLResponse<CategoriesModel>>();
 
         if (json?.Errors != null && json.Errors.Any())
             throw new Exception($"GraphQL errors: {string.Join(';', json.Errors.Select(e => e.Message))}");
 
-        return json?.Data?.Items ?? new List<ItemBaseQueryType>();
+        return json?.Data?.ItemCategories ?? new List<Categories>();
     }
-
+    
     private static readonly Dictionary<string, string> queries = new()
     {
-        { "ItemsQuery", @" query {
+        { "ItemBaseQuery", @" query {
             items(limit: 2) {
                 id
                 name
@@ -87,8 +89,6 @@ public class GraphQLService
         
         //Query = queries["ItemsQuery"];
     };
-
-
 }
 
 public class GraphQLResponse<TData>
@@ -99,21 +99,4 @@ public class GraphQLResponse<TData>
 public class GraphQLError
 {
     public string Message { get; set; } = "";
-}
-
-public class GraphQLData
-{
-    public List<ItemBaseQueryType> Items { get; set; } = new();
-}
-
-
-public class ItemBaseListQueryType
-{
-    public List<ItemBaseQueryType> Items { get; set; } = new();
-}
-
-
-public class CategoriesListQueryType
-{
-    public List<CategoriesQueryType> itemCategories { get; set; } = new();
 }

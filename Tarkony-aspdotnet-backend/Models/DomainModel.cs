@@ -1,3 +1,4 @@
+/**
 public class ItemBaseResultType
 {
     public string Id { get; set; }
@@ -15,3 +16,5 @@ public class PriceDeal
     public int? Price { get; set; }
     public string? Place { get; set; }
 }
+
+*/

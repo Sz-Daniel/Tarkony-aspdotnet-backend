@@ -1,3 +1,4 @@
+/**
 public static class ItemAdapter
 {
     public static ItemBaseResultType Map(ItemBaseQueryType item)
@@ -32,3 +33,5 @@ public static class ItemAdapter
         return new PriceDeal { Price = best.PriceRUB, Place = best.Vendor?.Name ?? "" };
     }
 }
+
+*/

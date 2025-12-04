@@ -1,0 +1,172 @@
+{
+  "SingleItemQueryType": {
+    "id": { "type": "string", "required": true },
+    "name": { "type": "string", "required": true },
+    "shortName": { "type": "string", "required": true },
+    "categories": { "type": "array", "items": { "$ref": "name" } },
+
+    "lastLowPrice": { "type": "number" },
+    "low24hPrice": { "type": "number" },
+    "avg24hPrice": { "type": "number" },
+    "high24hPrice": { "type": "number" },
+    "changeLast48hPercent": { "type": "number" },
+    "changeLast48h": { "type": "number" },
+    "lastOfferCount": { "type": "number" },
+
+    "width": { "type": "number" },
+    "weight": { "type": "number" },
+    "hasGrid": { "type": "number" },
+
+    "inspectImageLink": { "type": "string" },
+    "backgroundColor": { "type": "string" },
+    "gridImageLink": { "type": "string" },
+
+    "description": { "type": "string" },
+    "wikiLink": { "type": "string" },
+
+    "height": { "type": "number" },
+    "velocity": { "type": "number" },
+    "recoilModifier": { "type": "number" },
+    "loudness": { "type": "number" },
+    "accuracyModifier": { "type": "number" },
+    "ergonomicsModifier": { "type": "number" },
+
+    "updated": { "type": "string" },
+
+    "sellFor": { "type": "array", "items": { "$ref": "SellFor" } },
+    "buyFor": { "type": "array", "items": { "$ref": "BuyFor" } },
+    "bartersUsing": { "type": "array", "items": { "$ref": "BartersUsing" } },
+    "bartersFor": { "type": "array", "items": { "$ref": "BartersFor" } },
+    "craftsUsing": { "type": "array", "items": { "$ref": "CraftsUsing" } },
+    "craftsFor": { "type": "array", "items": { "$ref": "CraftsFor" } },
+    "usedInTasks": { "type": "array", "items": { "$ref": "UsedInTask" } },
+    "receivedFromTasks": {
+      "type": "array",
+      "items": { "$ref": "ReceivedFromTask" }
+    }
+  },
+
+  "ReceivedFromTask": {
+    "name": { "type": "string" },
+    "finishRewards": { "$ref": "FinishRewards" }
+  },
+
+  "FinishRewards": {
+    "items": { "type": "array", "items": { "$ref": "RewardItem" } }
+  },
+
+  "RewardItem": {
+    "count": { "type": "number" },
+    "item": { "$ref": "name" }
+  },
+
+  "UsedInTask": {
+    "name": { "type": "string" },
+    "objectives": { "type": "array", "items": { "$ref": "TaskObjectiveItem" } }
+  },
+
+  "TaskObjectiveItem": {
+    "description": { "type": "string" },
+    "count": { "type": "number" },
+    "item": { "$ref": "name" }
+  },
+
+  "CraftsUsing": {
+    "id": { "type": "string" },
+    "duration": { "type": "number" },
+    "level": { "type": "number" },
+    "station": { "$ref": "Station" },
+    "taskUnlock": { "$ref": "TaskUnlock" },
+    "requiredItems": {
+      "type": "array",
+      "items": { "$ref": "QueryCountedItem" }
+    },
+    "rewardItems": { "type": "array", "items": { "$ref": "QueryCountedItem" } }
+  },
+
+  "CraftsFor": { "$ref": "CraftsUsing" },
+
+  "Station": {
+    "name": { "type": "string" },
+    "imageLink": { "type": "string" }
+  },
+
+  "BartersFor": {
+    "id": { "type": "string" },
+    "buyLimit": { "type": "number" },
+    "level": { "type": "number" },
+    "trader": { "$ref": "Trader" },
+    "taskUnlock": { "$ref": "TaskUnlock" },
+    "requiredItems": {
+      "type": "array",
+      "items": { "$ref": "QueryCountedItem" }
+    },
+    "rewardItems": { "type": "array", "items": { "$ref": "QueryCountedItem" } }
+  },
+
+  "BartersUsing": { "$ref": "BartersFor" },
+
+  "QueryCountedItem": {
+    "count": { "type": "number" },
+    "item": { "$ref": "itemIcon" }
+  },
+
+  "BuyFor": {
+    "priceRUB": { "type": "number" },
+    "price": { "type": "number" },
+    "currency": { "type": "string" },
+    "vendor": { "$ref": "Vendor" }
+  },
+
+  "Vendor": {
+    "minTraderLevel": { "type": "number" },
+    "buyLimit": { "type": "number" },
+    "trader": { "$ref": "Trader" },
+    "taskUnlock": { "$ref": "TaskUnlock" }
+  },
+
+  "Trader": {
+    "imageLink": { "type": "string" },
+    "name": { "type": "string" },
+    "levels": { "type": "array", "items": { "$ref": "Levels" } }
+  },
+
+  "Levels": {
+    "level": { "type": "number" },
+    "requiredPlayerLevel": { "type": "number" },
+    "requiredReputation": { "type": "number" },
+    "requiredCommerce": { "type": "number" }
+  },
+
+  "TaskUnlock": {
+    "name": { "type": "string" },
+    "minPlayerLevel": { "type": "number" }
+  },
+
+  "SellFor": {
+    "priceRUB": { "type": "number" },
+    "vendor": { "$ref": "sellforVendor" },
+    "price": { "type": "number" },
+    "currency": { "type": "string" }
+  },
+
+  "sellforVendor": {
+    "name": { "type": "string" },
+    "foundInRaidRequired": { "type": "boolean" }
+  },
+
+  "traderForType": {
+    "priceRUB": { "type": "number" },
+    "vendor": { "$ref": "name" }
+  },
+
+  "itemIcon": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "gridImageLink": { "type": "string" }
+  },
+
+  "name": {
+    "name": { "type": "string" }
+  }
+}

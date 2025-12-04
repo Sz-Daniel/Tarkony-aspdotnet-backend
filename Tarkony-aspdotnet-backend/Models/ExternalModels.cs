@@ -1,3 +1,6 @@
+/**
+
+/**
 public class ItemBaseQueryType
 {
     public string Id { get; set; } 
@@ -20,11 +23,13 @@ public class Vendor
 {
     public string? Name { get; set; } 
 }
-
 public class Category
 {
     public string? NormalizedName { get; set; }
 }
+
+
+
 public class CategoriesQueryType
 {
     public string? id { get; set; }
@@ -43,3 +48,4 @@ public class Parent
 {
     public string? normalizedName { get; set; }
 }
+*/

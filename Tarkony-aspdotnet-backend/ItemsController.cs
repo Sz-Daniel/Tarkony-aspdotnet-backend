@@ -1,6 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel.DataAnnotations;
-
 
 namespace MyApi.Controllers
 {
@@ -17,25 +15,23 @@ namespace MyApi.Controllers
             _logger = logger;
         }
 
-        [HttpGet("bulk")]
+        [HttpGet("Items")]
         public async Task<IActionResult> GetItemsData()
         {
-            
-            _logger.LogInformation("Bulk GraphQL fetch started");
+            _logger.LogInformation("Items GraphQL fetch started");
             var items = await _service.FetchItemsAsync();
-            _logger.LogInformation("Bulk GraphQL fetch finished, count={Count}", items.Count);
-
+        
             return Ok(items); 
         }
 
+        
         [HttpGet("Categories")]
         public async Task<IActionResult> GetCategoriesData()
         {
             _logger.LogInformation("Categories GraphQL fetch started");
-            var categories = await _service.FetchCategoriesAsync();
-            _logger.LogInformation("Categories GraphQL fetch finished, count={Count}", categories.Count);
-
-            return Ok(categories); 
+            var items = await _service.FetchCategoriesAsync();
+        
+            return Ok(items); 
         }
 
     }

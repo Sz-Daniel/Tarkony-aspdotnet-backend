@@ -44,9 +44,13 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Microsoft.Azure.Cosmos": {
+            "Microsoft.Extensions.Options": {
               "target": "Package",
-              "version": "[3.56.0, )"
+              "version": "[10.0.0, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[3.5.2, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
