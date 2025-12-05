@@ -1,14 +1,15 @@
+
 using System.Collections.Generic;
     public class ItemBaseRoot
     {
-        public ItemBaseModel Data { get; set; }
+        public ItemBaseList Data { get; set; }
     }
-    public partial class ItemBaseModel
+    public  class ItemBaseList
     {
-        public List<Item> Items { get; set; }
+        public List<ItemBaseModel> Items { get; set; }
     }
 
-    public partial class Item
+    public  class ItemBaseModel
     {
         public string Id { get; set; }
         public string Name { get; set; }
@@ -20,18 +21,14 @@ using System.Collections.Generic;
         public List<For> BuyFor { get; set; }
     }
 
-    public partial class For
+    public  class For
     {
         public long PriceRub { get; set; }
         public Vendor Vendor { get; set; }
     }
 
-    public partial class Vendor
+    public  class Vendor
     {
         public string Name { get; set; }
     }
 
-    public partial class Category
-    {
-        public string NormalizedName { get; set; }
-    }

@@ -2,6 +2,10 @@
 using MongoDB.Driver;
 using Microsoft.Extensions.Options;
 
+using MongoExample.Models;
+using Mongo.Services;
+using GraphQL;
+using Quartz;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,16 +20,15 @@ builder.Services.AddHttpClient("GraphQLClient", client =>
 });
 builder.Services.AddScoped<GraphQLService>();
 
-// Bind settings
-builder.Services.Configure<MongoDbSettings>(
-    builder.Configuration.GetSection("MongoDbSettings"));
+builder.Services.Configure<MongoDBSettings>(builder.Configuration.GetSection("MongoDB"));
+builder.Services.AddScoped<MongoDBService>();
 
-// Register MongoClient as singleton
-builder.Services.AddSingleton<IMongoClient>(sp =>
+builder.Services.AddQuartzHostedService(options =>
 {
-    var settings = sp.GetRequiredService<IOptions<MongoDbSettings>>().Value;
-    return new MongoClient(settings.ConnectionString);
+    options.WaitForJobsToComplete = true;
 });
+//add dependency injection for QuartzJobScheduler
+builder.Services.AddSingleton<IQuartzJobScheduler, QuartzJobScheduler>();
 
 var app = builder.Build();
 

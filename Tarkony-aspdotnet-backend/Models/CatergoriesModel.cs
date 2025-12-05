@@ -1,13 +1,13 @@
 using System.Collections.Generic;
     public class CategoriesRoot
     {
-        public CategoriesModel Data { get; set; }
+        public CategoryList Data { get; set; }
     }
-    public partial class CategoriesModel
+    public class CategoryList
     {
-        public List<Categories> ItemCategories { get; set; }
+        public List<CategoryModel> ItemCategories { get; set; }
     }
-    public partial class Categories
+    public class CategoryModel
     {
         public string Id { get; set; }
         public string Name { get; set; }
@@ -16,7 +16,7 @@ using System.Collections.Generic;
         public List<Parent> Children { get; set; }
     }
 
-    public partial class Parent
+    public class Parent
     {
         public string NormalizedName { get; set; }
     }
