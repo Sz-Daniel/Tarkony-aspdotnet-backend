@@ -13,24 +13,6 @@ namespace MyApi.Controllers
             _service = service;
             _logger = logger;
         }
-
-        [HttpGet("ItemBase")]
-        public async Task<IActionResult> GetItemBaseData()
-        {
-            _logger.LogInformation("ItemBase GraphQL fetch started");
-            var items = await _service.FetchItemBaseAsync();
-        
-            return Ok(items); 
-        }
-        
-        [HttpGet("Items")]
-        public async Task<IActionResult> GetItemsData()
-        {
-            _logger.LogInformation("Items GraphQL fetch started");
-            var items = await _service.FetchItemsAsync();
-        
-            return Ok(items); 
-        }
         
         [HttpGet("Categories")]
         public async Task<IActionResult> GetCategoriesData()
@@ -41,6 +23,15 @@ namespace MyApi.Controllers
             return Ok(items); 
         }
 
+        [HttpGet("ItemBase")]
+        public async Task<IActionResult> GetItemBaseData()
+        {
+            _logger.LogInformation("ItemBase GraphQL fetch started");
+            var items = await _service.FetchItemBaseAsync();
+        
+            return Ok(items); 
+        }
+        
     }
     
     [ApiController]
@@ -55,3 +46,5 @@ namespace MyApi.Controllers
     }
     
 }
+
+

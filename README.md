@@ -6,12 +6,23 @@ This backend layer reads data from a 3rd party **GraphQL API** (Tarkov.dev), sto
 
 ---
 
+## Next Task
+
+- ItemDetails model - GraphQL - Mongo - ItemsController
+- Layer: External Model - Adapter - Domain Model -> Mongo
+- CORS setup for Frontend
+- Deploy
+- Frontend: GraphQL API fetching rework -> REST API from ItemsController
+
+---
+
 ## Architecture Overview
 
 - **Backend:** ASP.NET Core Web API
 - **Data Source:** 3rd party GraphQL endpoint
 - **Adapter Layer:** GraphQL → internal DTO → domain model
-- **Persistence:** Cosmos DB (NoSQL documents)
+- **Persistence:** Mongo Atlas DB (NoSQL documents)
+- **Schesuled Jobs** Quartz
 - **Serving:** REST API endpoints
 
 ---
@@ -19,10 +30,12 @@ This backend layer reads data from a 3rd party **GraphQL API** (Tarkov.dev), sto
 ## Current Status
 
 - ASP.NET Core project initialized
-- Swagger/OpenAPI documentation in developer mode
-- Middleware: logging, error handling
-- `GraphQLService` → `HttpClient` integration with Tarkov.dev GraphQL API
-- `ItemsController` → `/api/items/bulk` endpoint fetching data from GraphQL
+- Swagger/OpenAPI docs enabled in developer mode
+- Middleware: logging and error handling
+- GraphQLService: integration with Tarkov.dev GraphQL API
+- MongoDB: NoSQL, bulk data for frontend rendering only
+- MongoController: direct data upload and mutation
+- ItemController: queries MongoDB for data
 
 ---
 
@@ -30,15 +43,21 @@ This backend layer reads data from a 3rd party **GraphQL API** (Tarkov.dev), sto
 
 ```
 /src
-├── Program.cs           # ASP.NET Core entry point, middleware, DI
+├── Program.cs
 ├── Controllers/
-│   └── ItemsController.cs  # REST endpoints (GraphQL fetch and serving results)
+│   ├── ItemsController.cs
+│   ├── MongoController.cs
+│   └── QuartzController.cs
 ├── Services/
-│   ├── GraphQLService.cs    # GraphQL adapter layer + HttpClient wrapper
-│   └── Adapters.cs          # Mapping: query DTO -> domain DTO
+│   ├── GraphQLService.cs
+│   ├── MongoDBServices.cs
+│   └── QuartzServices.cs
 ├── Models/
-│   ├── ExternalModels.cs    # DTOs for GraphQL response
-│   └── DomainModel.cs       # Internal domain types
+│   ├── ItemSingle.cs
+│   ├── ItemDetail.cs
+│   ├── ItemBaseModel.cs
+│   ├── CategoriesModel.cs
+│   └── MongoModel.cs
 └── Properties/launchSettings.json
 ```
 
@@ -52,11 +71,6 @@ This backend layer reads data from a 3rd party **GraphQL API** (Tarkov.dev), sto
 git clone https://github.com/Sz-Daniel/Tarkony-aspdotnet-backend/
 cd Tarkony-aspdotnet-backend
 
-
-```powershell
-git clone https://github.com/Sz-Daniel/Tarkony-aspdotnet-backend/
-cd Tarkony-aspdotnet-backend
-````
 
 2. Restore NuGet packages and build the project:
 
@@ -83,17 +97,13 @@ https://localhost:5001/swagger
 
 - Backend setup – ASP.NET Core API skeleton, Swagger documentation
 - GraphQL integration – adapter layer, validation, DTOs
-- NoSQL storage – Cosmos DB integration, item documents
+- NoSQL storage – Mongo Atlas DB integration, item documents
 - REST API endpoints – search, prices, barter information
 - CI/CD pipeline – GitHub Actions / Azure DevOps
 - First deploy – Azure App Service (with free tier options)
 - User management – ASP.NET Identity, JWT tokens, role-based access
 - Shopping list feature – user saves with price/barter snapshots
-- Cache & Queue – Redis cache, Azure Storage Queue
-- Blob Storage integration – images and static content
-- Security – HTTPS, OWASP basics, secret management
-- Advanced patterns – CQRS, Mediator, AutoMapper, unit/integration tests
-- Monitoring – Application Insights, performance tuning
+
 
 ---
 
@@ -102,3 +112,4 @@ https://localhost:5001/swagger
 - Pagination will only be introduced based on frontend requirements; initially, the backend provides simple, explicit endpoints.
 - Strive for clean layering: GraphQL deserialization, adapter mapping, domain model, repository.
 - The project currently has a junior focus: simple, easy-to-understand solutions; later expandable with advanced patterns.
+````

@@ -1,4 +1,7 @@
 using System;
+using Categories;
+using Item;
+using ItemBase;
 using Microsoft.AspNetCore.Mvc;
 using Mongo.Services;
 
@@ -8,37 +11,51 @@ namespace Mongo.Controllers;
 [Controller]
 [Route("mongodb/[controller]")]
 public class MongoController: Controller {
-    
-    private readonly MongoDBService _mongoDBService;
 
+    //DI
+    private readonly MongoDBService _mongoDBService;
     public MongoController(MongoDBService mongoDBService) {
         _mongoDBService = mongoDBService;
     }
 
-    [HttpGet("GetAllItems")]
-    public async Task<List<ItemModel>> GetAllItems()
+    // Get section
+
+/**
+    [HttpGet("GetCategories")]
+    public async Task<List<CategoryModel>> GetCategories()
     {
-        return await _mongoDBService.GetAllItemsAsync();
+        return await _mongoDBService.GetCategoriesAsync();
     }
+
+    [HttpGet("GetItemBase")]
+    public async Task<List<ItemBaseModel>> GetItemBase()
+    {
+        return await _mongoDBService.GetItemBaseAsync();
+    }
+*/
+
+
 }
+
+// Manually "Forced" database function calls
 
 [Controller]
 [Route("mongodb/forced/[controller]")]
 public class MongoForcedController: Controller {
     
     private readonly MongoDBService _mongoDBService;
-
     public MongoForcedController(MongoDBService mongoDBService) {
         _mongoDBService = mongoDBService;
     }
 
-    [HttpGet("ForceItemsDataDump")]
-    public async Task<IActionResult> ForceItemsDataDump()
+
+    [HttpGet("ForceCategoriesDump")]
+    public async Task<IActionResult> ForceCategoriesDump()
     {
         try
         {
-            var result = await _mongoDBService.FetchItemUploadAsync();
-            return Created("api/items/ForceItemsDataDump", result);
+            var result = await _mongoDBService.FetchCategoriesUploadAsync();
+            return Created("api/items/ForceCategoriesDump", result);
         }
         catch (Exception ex)
         {
@@ -47,13 +64,13 @@ public class MongoForcedController: Controller {
         }
     }
 
-    [HttpDelete("ForceItemsDeleteDump")]
-    public async Task<IActionResult> ForceItemsDeleteDump()
+    [HttpGet("ForceItemBaseDump")]
+    public async Task<IActionResult> FetchItemBaseDump()
     {
         try
         {
-            var result = await _mongoDBService.DeleteAllAsync();
-            return Ok(result);
+            var result = await _mongoDBService.FetchItemBaseUploadAsync();
+            return Created("api/items/ForceItemBaseDump", result);
         }
         catch (Exception ex)
         {
@@ -61,29 +78,7 @@ public class MongoForcedController: Controller {
             return StatusCode(500, new { error = ex.Message });
         }
     }
+
+
 }
 
-
-/*
-    [HttpGet]
-    public async Task<List<Playlist>> Get() {
-        return await _mongoDBService.GetAsync();
-    }
-        [HttpPost]
-    public async Task<IActionResult> Post([FromBody] Playlist playlist) {
-        await _mongoDBService.CreateAsync(playlist);
-        return CreatedAtAction(nameof(Get), new { id = playlist.Id }, playlist);
-    }
-
-    [HttpPut("{id}")]
-    public async Task<IActionResult> AddToPlaylist(string id, [FromBody] string movieId) {    
-        await _mongoDBService.AddToPlaylistAsync(id, movieId);
-        return NoContent();
-    }
-
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(string id) {
-        await _mongoDBService.DeleteAsync(id);
-        return NoContent();
-    }
-*/

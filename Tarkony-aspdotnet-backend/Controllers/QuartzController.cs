@@ -12,12 +12,8 @@ namespace QuartzSceduleSample.Controllers
         {
             _quartzJobScheduler = quartzJobScheduler;
         }
-        [HttpPost]
-        public async Task<IActionResult> PostAsync(CancellationToken cancellationToken)
-        {
-            //create a new job sample job
-            
-            return Ok("Job is scheduled");
-        }
+
+        //Place for Scheduled Jobs - not need right now
     }
 }
+

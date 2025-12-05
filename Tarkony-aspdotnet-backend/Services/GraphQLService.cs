@@ -1,3 +1,6 @@
+using Categories;
+using Item;
+using ItemBase;
 namespace GraphQL
 {
   public class GraphQLRequest
@@ -14,6 +17,27 @@ public class GraphQLService
     public GraphQLService(IHttpClientFactory factory)
     {
         _client = factory.CreateClient("GraphQLClient");
+    }
+
+   public async Task<List<ItemBaseModel>> FetchItemDetailAsync()
+    {
+        var request = new GraphQLRequest
+        {
+            Query = queries["ItemBaseQuery"]
+        };
+
+        var response = await _client.PostAsJsonAsync("", request);
+
+        if (!response.IsSuccessStatusCode)
+            throw new Exception($"GraphQL HTTP error: {response.StatusCode}");
+
+        var json = await response.Content.ReadFromJsonAsync<GraphQLResponse<ItemBaseList>>();
+
+        if (json?.Errors != null && json.Errors.Any())
+            throw new Exception($"GraphQL errors: {string.Join(';', json.Errors.Select(e => e.Message))}");
+
+        // Itt már csak a lista kell
+        return json?.Data?.Items ?? new List<ItemBaseModel>();
     }
 
     public async Task<List<ItemBaseModel>> FetchItemBaseAsync()
@@ -37,24 +61,6 @@ public class GraphQLService
         return json?.Data?.Items ?? new List<ItemBaseModel>();
     }
 
-    public async Task<List<ItemModel>> FetchItemsAsync()
-    {
-        var request = new GraphQLRequest
-        {
-            Query = queries["ItemsQuery"]
-        };
-        var response = await _client.PostAsJsonAsync("", request);
-
-        if (!response.IsSuccessStatusCode)
-            throw new Exception($"GraphQL HTTP error: {response.StatusCode}");
-
-        var json = await response.Content.ReadFromJsonAsync<GraphQLResponse<ItemList>>();
-
-        if (json?.Errors != null && json.Errors.Any())
-            throw new Exception($"GraphQL errors: {string.Join(';', json.Errors.Select(e => e.Message))}");
-
-        return json?.Data.Items ?? new List<ItemModel>();
-    }
 
     public async Task<List<CategoryModel>> FetchCategoriesAsync()
     {
@@ -78,147 +84,161 @@ public class GraphQLService
     
     private static readonly Dictionary<string, string> queries = new()
     {
-        { "ItemBaseQuery", @" query {
-            items(limit: 2) {
-                id
-                name
-                category { normalizedName }
-                gridImageLink
-                changeLast48h
-                changeLast48hPercent
-                sellFor { priceRUB vendor { name } }
-                buyFor { priceRUB vendor { name } }
-            }
-        }"},
-        
-        { "CategoriesQuery", @"query{
-            itemCategories {
-                id
-                name
-                normalizedName
-                children { normalizedName }
-                parent { normalizedName }
-            }
-        }"},
+      { "StatusQuery",@"query {
+      status {
+      currentStatuses { message name status statusCode }
+      generalStatus { message name status statusCode }
+      messages { content solveTime statusCode time type }
+      }
+      }"},
+      { "CategoriesQuery", @"query{
+      itemCategories {
+      id
+      name
+      normalizedName
+      children { normalizedName }
+      parent { normalizedName }
+      }
+      }"},
 
-        {"StatusQuery",@"query {
-            status {
-                currentStatuses { message name status statusCode }
-                generalStatus { message name status statusCode }
-                messages { content solveTime statusCode time type }
-            }
-        }"},
-         { "ItemsQuery", @" query {
-        items(limit: 2) {
+      { "ItemBaseQuery", @" query {
+      items(limit: 2) {
+      id
+      name
+      category { normalizedName }
+      gridImageLink
+      changeLast48h
+      changeLast48hPercent
+      sellFor { priceRUB vendor { name } }
+      buyFor { priceRUB vendor { name } }
+      }
+      }"},
+      { "ItemDetailQuery", @" query {
+      items(limit: 2) {
+      id
+      name
+      category { normalizedName }
+      gridImageLink
+      changeLast48h
+      changeLast48hPercent
+      sellFor { priceRUB vendor { name } }
+      buyFor { priceRUB vendor { name } }
+      }
+      }"},
 
-        id
-        name
-        shortName
-        categories { name }
-        lastLowPrice
-        low24hPrice
-        avg24hPrice
-        high24hPrice
-        changeLast48hPercent
-        changeLast48h
-        lastOfferCount
-        width
-        weight
-        hasGrid
-        inspectImageLink
-        backgroundColor
-        gridImageLink
-        description
-        wikiLink
-        height
-        velocity
-        recoilModifier
-        loudness
-        accuracyModifier
-        ergonomicsModifier
-        updated
-        sellFor { currency price priceRUB
-          vendor { name
-          ... on FleaMarket { foundInRaidRequired }
-        }
+
+      { "ItemsQuery", @" query {
+      items(limit: 2) {
+
+      id
+      name
+      shortName
+      categories { name }
+      lastLowPrice
+      low24hPrice
+      avg24hPrice
+      high24hPrice
+      changeLast48hPercent
+      changeLast48h
+      lastOfferCount
+      width
+      weight
+      hasGrid
+      inspectImageLink
+      backgroundColor
+      gridImageLink
+      description
+      wikiLink
+      height
+      velocity
+      recoilModifier
+      loudness
+      accuracyModifier
+      ergonomicsModifier
+      updated
+      sellFor { currency price priceRUB
+      vendor { name
+      ... on FleaMarket { foundInRaidRequired }
+      }
       }
 
       buyFor { currency price priceRUB
-        vendor {
-          ... on TraderOffer { minTraderLevel buyLimit
-            trader { name imageLink
-              levels { level requiredPlayerLevel requiredReputation requiredCommerce }
-            }
-            taskUnlock { name minPlayerLevel }
-          }
-        }
+      vendor {
+      ... on TraderOffer { minTraderLevel buyLimit
+      trader { name imageLink
+      levels { level requiredPlayerLevel requiredReputation requiredCommerce }
+      }
+      taskUnlock { name minPlayerLevel }
+      }
+      }
       }
 
       bartersUsing { id level buyLimit
-        taskUnlock { name minPlayerLevel
-        }
-        trader { name imageLink
-          levels { level requiredPlayerLevel requiredReputation requiredCommerce }
-        }
-        rewardItems { count
-          item { id gridImageLink name }
-        }
-        requiredItems { count
-          item { id gridImageLink name }
-        }
+      taskUnlock { name minPlayerLevel
+      }
+      trader { name imageLink
+      levels { level requiredPlayerLevel requiredReputation requiredCommerce }
+      }
+      rewardItems { count
+      item { id gridImageLink name }
+      }
+      requiredItems { count
+      item { id gridImageLink name }
+      }
       }  
 
       bartersFor { id level buyLimit
-        taskUnlock { name minPlayerLevel }
-        trader { name imageLink
-          levels { level requiredPlayerLevel requiredReputation requiredCommerce }
-        }
-        rewardItems { count
-          item { id gridImageLink name }
-        }
-        requiredItems { count
-          item { id gridImageLink name}
-        }
+      taskUnlock { name minPlayerLevel }
+      trader { name imageLink
+      levels { level requiredPlayerLevel requiredReputation requiredCommerce }
+      }
+      rewardItems { count
+      item { id gridImageLink name }
+      }
+      requiredItems { count
+      item { id gridImageLink name}
+      }
       } 
 
       craftsUsing { id duration level
-        station { name imageLink }
-        taskUnlock { name minPlayerLevel }
-        rewardItems { count
-          item { id gridImageLink name }
-        }
-        requiredItems { count
-          item { id gridImageLink name }
-        }
+      station { name imageLink }
+      taskUnlock { name minPlayerLevel }
+      rewardItems { count
+      item { id gridImageLink name }
+      }
+      requiredItems { count
+      item { id gridImageLink name }
+      }
       }  
 
       craftsFor { id duration level
-        station { name imageLink }
-        taskUnlock { name minPlayerLevel }
-        rewardItems { count
-          item { id gridImageLink name }
-        }
-        requiredItems { count
-          item { id gridImageLink name }
-        }
+      station { name imageLink }
+      taskUnlock { name minPlayerLevel }
+      rewardItems { count
+      item { id gridImageLink name }
+      }
+      requiredItems { count
+      item { id gridImageLink name }
+      }
       }
 
       usedInTasks { name
-        objectives {
-          ... on TaskObjectiveItem { description count
-            item { name }
-          }
-        }
+      objectives {
+      ... on TaskObjectiveItem { description count
+      item { name }
+      }
+      }
       }
       receivedFromTasks { name
-        finishRewards {
-          items { count
-            item { name }
-          }
-        }
+      finishRewards {
+      items { count
+      item { name }
       }
-    }
-}"},
+      }
+      }
+      }
+      }"},
+
         //Query = queries["ItemsQuery"];
     };
 }
@@ -234,3 +254,26 @@ public class GraphQLError
 }
 
 }
+
+
+/**
+    public async Task<List<ItemModel>> FetchItemsAsync()
+    {
+        var request = new GraphQLRequest
+        {
+            Query = queries["ItemsQuery"]
+        };
+        var response = await _client.PostAsJsonAsync("", request);
+
+        if (!response.IsSuccessStatusCode)
+            throw new Exception($"GraphQL HTTP error: {response.StatusCode}");
+
+        var json = await response.Content.ReadFromJsonAsync<GraphQLResponse<ItemList>>();
+
+        if (json?.Errors != null && json.Errors.Any())
+            throw new Exception($"GraphQL errors: {string.Join(';', json.Errors.Select(e => e.Message))}");
+
+        return json?.Data.Items ?? new List<ItemModel>();
+    }
+
+*/

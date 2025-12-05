@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Tarkony-aspdotnet-backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+006d11448181d470c4cadf786a5b273be11efd4d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7284914101769be048416c6acd13f22c3287eac8")]
 [assembly: System.Reflection.AssemblyProductAttribute("Tarkony-aspdotnet-backend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Tarkony-aspdotnet-backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

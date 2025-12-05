@@ -50,3 +50,6 @@ D:\repo\Tarkony\Tarkony-aspdotnet-backend\Tarkony-aspdotnet-backend\bin\Debug\ne
 D:\repo\Tarkony\Tarkony-aspdotnet-backend\Tarkony-aspdotnet-backend\bin\Debug\net8.0\SharpCompress.dll
 D:\repo\Tarkony\Tarkony-aspdotnet-backend\Tarkony-aspdotnet-backend\bin\Debug\net8.0\Snappier.dll
 D:\repo\Tarkony\Tarkony-aspdotnet-backend\Tarkony-aspdotnet-backend\bin\Debug\net8.0\ZstdSharp.dll
+D:\repo\Tarkony\Tarkony-aspdotnet-backend\Tarkony-aspdotnet-backend\bin\Debug\net8.0\Quartz.dll
+D:\repo\Tarkony\Tarkony-aspdotnet-backend\Tarkony-aspdotnet-backend\bin\Debug\net8.0\Quartz.Extensions.DependencyInjection.dll
+D:\repo\Tarkony\Tarkony-aspdotnet-backend\Tarkony-aspdotnet-backend\bin\Debug\net8.0\Quartz.Extensions.Hosting.dll

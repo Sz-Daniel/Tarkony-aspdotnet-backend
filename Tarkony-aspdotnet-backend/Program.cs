@@ -23,23 +23,30 @@ builder.Services.AddScoped<GraphQLService>();
 builder.Services.Configure<MongoDBSettings>(builder.Configuration.GetSection("MongoDB"));
 builder.Services.AddScoped<MongoDBService>();
 
-builder.Services.AddQuartzHostedService(options =>
+
+builder.Services.AddQuartz(q =>
 {
-    options.WaitForJobsToComplete = true;
+    q.UseMicrosoftDependencyInjectionJobFactory();
 });
-//add dependency injection for QuartzJobScheduler
+
+
+builder.Services.AddQuartzHostedService(opt =>
+{
+    opt.WaitForJobsToComplete = true;
+});
+
 builder.Services.AddSingleton<IQuartzJobScheduler, QuartzJobScheduler>();
 
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage(); // részletes hibák fejlesztéskor
+    app.UseDeveloperExceptionPage(); 
 }
 else
 {
-    app.UseExceptionHandler("/error"); // globális hiba kezelő endpoint
-    app.UseHsts(); // biztonságos HTTPS header
+    app.UseExceptionHandler("/error");
+    app.UseHsts(); 
 }
 
 if (app.Environment.IsDevelopment())

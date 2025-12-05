@@ -37,13 +37,10 @@ public class QuartzJobScheduler(ISchedulerFactory schedulerFactory, ILogger<Quar
     }
 }
 
-
-
 public class PriceUpdate : IJob
 {
     private readonly MongoDBService _service;
 
-    // DI-vel be tudod injektálni a service-t
     public PriceUpdate(MongoDBService service)
     {
         _service = service;
@@ -51,11 +48,11 @@ public class PriceUpdate : IJob
 
     public async Task Execute(IJobExecutionContext context)
     {
-        // Itt futtatod a függvényt, amit időzíteni akarsz
-        await _service.FetchItemUploadAsync();
+        
+        //await _service.FetchItemUploadAsync();
 
         // vagy bármilyen más logika
-        Console.WriteLine($"Job lefutott: {DateTime.Now}");
+        Console.WriteLine($"Job Dob: {DateTime.Now}");
     }
 }
 
@@ -63,7 +60,6 @@ public class DataRefresh : IJob
 {
     private readonly MongoDBService _service;
 
-    // DI-vel be tudod injektálni a service-t
     public DataRefresh(MongoDBService service)
     {
         _service = service;
@@ -71,10 +67,10 @@ public class DataRefresh : IJob
 
     public async Task Execute(IJobExecutionContext context)
     {
-        // Itt futtatod a függvényt, amit időzíteni akarsz
-        await _service.FetchItemUploadAsync();
+        
+        //await _service.FetchItemUploadAsync();
 
-        // vagy bármilyen más logika
-        Console.WriteLine($"Job lefutott: {DateTime.Now}");
+       
+        Console.WriteLine($"Job Done: {DateTime.Now}");
     }
 }
