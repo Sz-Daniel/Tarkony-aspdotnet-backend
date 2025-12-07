@@ -62,7 +62,7 @@ namespace GraphQL
         {
             var request = new GraphQLRequest { Query = GraphQL.Query.queries["ItemsQuery"] };
 
-            var response = await _client.PostAsJsonAsync("", request);
+            var response = await _client.PostAsJsonAsync(_client.BaseAddress, request);
 
             if (!response.IsSuccessStatusCode)
                 throw new Exception($"GraphQL HTTP error: {response.StatusCode}");

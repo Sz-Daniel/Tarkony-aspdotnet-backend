@@ -11,15 +11,18 @@ This backend layer reads data from a 3rd party **GraphQL API** (Tarkov.dev), sto
 ## Next Task
 
 - Deploy
+- Further expansion of Error
+- Further expansion of Logging
+- Adapter fixing
 - Documentation
 - ItemsPrice: Create a Quary and DTO, Upload into Items - Refresh the item's price
+- Log db collection
 - Quartz timing for frefres the Item Price and Item data into database
 - GraphQL.FetchAPIStatusAsync: Generate DTO from APIStatusQuery, Create API Controller to GET the API status.
 - ItemSingle: Create DTO from Query and From Frontend Typescript, Adapter, Upload
 - Batching upload insteand bulk
-- Log db collection
 - Status page for backend
-- Refactor
+- Refactor (+ Domain Pacalcase with JsonPropertyName)
 - Deploy End of Stage 2
 
 ---

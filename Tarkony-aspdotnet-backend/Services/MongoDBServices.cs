@@ -27,8 +27,9 @@ namespace Mongo.Services
             const string itemsCollection = "Items";
             const string categoriesCollection = "Categories";
 
-            MongoClient client = new MongoClient(mongoDBSettings.Value.ConnectionURI);
-            IMongoDatabase database = client.GetDatabase(mongoDBSettings.Value.DatabaseName);
+            var settings = mongoDBSettings.Value;
+            MongoClient client = new MongoClient(settings.ConnectionURI);
+            IMongoDatabase database = client.GetDatabase(settings.DatabaseName);
 
             _itemsCollection = database.GetCollection<Items.Domain.Items>(itemsCollection);
             _categoriesCollection = database.GetCollection<CategoryModel>(categoriesCollection);

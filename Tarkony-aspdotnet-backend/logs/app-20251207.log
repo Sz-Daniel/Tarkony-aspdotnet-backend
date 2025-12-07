@@ -14,3 +14,188 @@
 2025-12-07 16:41:01.799 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5128/ - null null
 2025-12-07 16:41:01.902 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5128/ - 404 null null 106.1067ms
 2025-12-07 16:41:01.907 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5128/, Response status code: 404
+2025-12-07 18:52:59.107 +01:00 [INF] Now listening on: http://localhost:5128
+2025-12-07 18:52:59.137 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-07 18:52:59.137 +01:00 [INF] Hosting environment: Development
+2025-12-07 18:52:59.137 +01:00 [INF] Content root path: D:\repo\Tarkony\Tarkony-aspdotnet-backend\Tarkony-aspdotnet-backend
+2025-12-07 18:52:59.495 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5128/ - null null
+2025-12-07 18:52:59.579 +01:00 [INF] [GET / "2025-12-07T17:52:59.5732534Z"] Start.
+2025-12-07 18:52:59.582 +01:00 [INF] [GET / "2025-12-07T17:52:59.5822255Z"] End.
+2025-12-07 18:52:59.634 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5128/ - 404 null null 141.5893ms
+2025-12-07 18:52:59.639 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5128/, Response status code: 404
+2025-12-07 18:53:44.623 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5128/FrontendFrontend/ItemBase - null null
+2025-12-07 18:53:44.623 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5128/Frontend/Frontend/Categories - null null
+2025-12-07 18:53:44.634 +01:00 [INF] CORS policy execution successful.
+2025-12-07 18:53:44.634 +01:00 [INF] CORS policy execution successful.
+2025-12-07 18:53:44.638 +01:00 [INF] [GET /Frontend/Frontend/Categories "2025-12-07T17:53:44.6381482Z"] Start.
+2025-12-07 18:53:44.638 +01:00 [INF] [GET /FrontendFrontend/ItemBase "2025-12-07T17:53:44.6381482Z"] Start.
+2025-12-07 18:53:44.638 +01:00 [INF] [GET /FrontendFrontend/ItemBase "2025-12-07T17:53:44.6385893Z"] End.
+2025-12-07 18:53:44.638 +01:00 [INF] [GET /Frontend/Frontend/Categories "2025-12-07T17:53:44.6385893Z"] End.
+2025-12-07 18:53:44.641 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5128/Frontend/Frontend/Categories - 404 0 null 18.4889ms
+2025-12-07 18:53:44.641 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5128/FrontendFrontend/ItemBase - 404 0 null 18.4886ms
+2025-12-07 18:53:44.642 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5128/FrontendFrontend/ItemBase, Response status code: 404
+2025-12-07 18:53:44.642 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5128/Frontend/Frontend/Categories, Response status code: 404
+2025-12-07 18:53:45.862 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5128/Frontend/Frontend/Categories - null null
+2025-12-07 18:53:45.862 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5128/FrontendFrontend/ItemBase - null null
+2025-12-07 18:53:45.864 +01:00 [INF] CORS policy execution successful.
+2025-12-07 18:53:45.864 +01:00 [INF] CORS policy execution successful.
+2025-12-07 18:53:45.864 +01:00 [INF] [GET /FrontendFrontend/ItemBase "2025-12-07T17:53:45.8649348Z"] Start.
+2025-12-07 18:53:45.864 +01:00 [INF] [GET /Frontend/Frontend/Categories "2025-12-07T17:53:45.8649349Z"] Start.
+2025-12-07 18:53:45.865 +01:00 [INF] [GET /FrontendFrontend/ItemBase "2025-12-07T17:53:45.8651243Z"] End.
+2025-12-07 18:53:45.865 +01:00 [INF] [GET /Frontend/Frontend/Categories "2025-12-07T17:53:45.8651482Z"] End.
+2025-12-07 18:53:45.865 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5128/FrontendFrontend/ItemBase - 404 0 null 3.3914ms
+2025-12-07 18:53:45.865 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5128/Frontend/Frontend/Categories - 404 0 null 3.3839ms
+2025-12-07 18:53:45.865 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5128/FrontendFrontend/ItemBase, Response status code: 404
+2025-12-07 18:53:45.865 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5128/Frontend/Frontend/Categories, Response status code: 404
+2025-12-07 18:53:47.871 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5128/FrontendFrontend/ItemBase - null null
+2025-12-07 18:53:47.871 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5128/Frontend/Frontend/Categories - null null
+2025-12-07 18:53:47.871 +01:00 [INF] CORS policy execution successful.
+2025-12-07 18:53:47.871 +01:00 [INF] CORS policy execution successful.
+2025-12-07 18:53:47.871 +01:00 [INF] [GET /Frontend/Frontend/Categories "2025-12-07T17:53:47.8718745Z"] Start.
+2025-12-07 18:53:47.871 +01:00 [INF] [GET /FrontendFrontend/ItemBase "2025-12-07T17:53:47.8718737Z"] Start.
+2025-12-07 18:53:47.871 +01:00 [INF] [GET /Frontend/Frontend/Categories "2025-12-07T17:53:47.8719631Z"] End.
+2025-12-07 18:53:47.872 +01:00 [INF] [GET /FrontendFrontend/ItemBase "2025-12-07T17:53:47.8719875Z"] End.
+2025-12-07 18:53:47.872 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5128/Frontend/Frontend/Categories - 404 0 null 0.6318ms
+2025-12-07 18:53:47.872 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5128/FrontendFrontend/ItemBase - 404 0 null 0.6568ms
+2025-12-07 18:53:47.872 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5128/Frontend/Frontend/Categories, Response status code: 404
+2025-12-07 18:53:47.872 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5128/FrontendFrontend/ItemBase, Response status code: 404
+2025-12-07 18:53:51.882 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5128/Frontend/Frontend/Categories - null null
+2025-12-07 18:53:51.882 +01:00 [INF] CORS policy execution successful.
+2025-12-07 18:53:51.883 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5128/FrontendFrontend/ItemBase - null null
+2025-12-07 18:53:51.883 +01:00 [INF] [GET /Frontend/Frontend/Categories "2025-12-07T17:53:51.8832479Z"] Start.
+2025-12-07 18:53:51.883 +01:00 [INF] [GET /Frontend/Frontend/Categories "2025-12-07T17:53:51.8836799Z"] End.
+2025-12-07 18:53:51.883 +01:00 [INF] CORS policy execution successful.
+2025-12-07 18:53:51.883 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5128/Frontend/Frontend/Categories - 404 0 null 1.5373ms
+2025-12-07 18:53:51.884 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5128/Frontend/Frontend/Categories, Response status code: 404
+2025-12-07 18:53:51.884 +01:00 [INF] [GET /FrontendFrontend/ItemBase "2025-12-07T17:53:51.8840680Z"] Start.
+2025-12-07 18:53:51.884 +01:00 [INF] [GET /FrontendFrontend/ItemBase "2025-12-07T17:53:51.8847138Z"] End.
+2025-12-07 18:53:51.885 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5128/FrontendFrontend/ItemBase - 404 0 null 1.7848ms
+2025-12-07 18:53:51.885 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5128/FrontendFrontend/ItemBase, Response status code: 404
+2025-12-07 18:53:59.235 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5128/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-07 18:53:59.240 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5128/_framework/aspnetcore-browser-refresh.js - 200 16459 application/javascript; charset=utf-8 4.3471ms
+2025-12-07 18:53:59.913 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5128/Frontend/Frontend/Categories - null null
+2025-12-07 18:53:59.914 +01:00 [INF] CORS policy execution successful.
+2025-12-07 18:53:59.915 +01:00 [INF] [GET /Frontend/Frontend/Categories "2025-12-07T17:53:59.9150299Z"] Start.
+2025-12-07 18:53:59.915 +01:00 [INF] [GET /Frontend/Frontend/Categories "2025-12-07T17:53:59.9153003Z"] End.
+2025-12-07 18:53:59.915 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5128/Frontend/Frontend/Categories - 404 0 null 2.4002ms
+2025-12-07 18:53:59.916 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5128/Frontend/Frontend/Categories, Response status code: 404
+2025-12-07 18:53:59.916 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5128/FrontendFrontend/ItemBase - null null
+2025-12-07 18:53:59.916 +01:00 [INF] CORS policy execution successful.
+2025-12-07 18:53:59.916 +01:00 [INF] [GET /FrontendFrontend/ItemBase "2025-12-07T17:53:59.9165503Z"] Start.
+2025-12-07 18:53:59.916 +01:00 [INF] [GET /FrontendFrontend/ItemBase "2025-12-07T17:53:59.9167066Z"] End.
+2025-12-07 18:53:59.918 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5128/FrontendFrontend/ItemBase - 404 0 null 1.9436ms
+2025-12-07 18:53:59.918 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5128/FrontendFrontend/ItemBase, Response status code: 404
+2025-12-07 18:53:59.937 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5128/swagger/v1/swagger.json - null null
+2025-12-07 18:54:00.153 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5128/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 215.6519ms
+2025-12-07 18:54:15.943 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5128/Frontend/Frontend/Categories - null null
+2025-12-07 18:54:15.943 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5128/FrontendFrontend/ItemBase - null null
+2025-12-07 18:54:15.944 +01:00 [INF] CORS policy execution successful.
+2025-12-07 18:54:15.944 +01:00 [INF] CORS policy execution successful.
+2025-12-07 18:54:15.944 +01:00 [INF] [GET /Frontend/Frontend/Categories "2025-12-07T17:54:15.9445215Z"] Start.
+2025-12-07 18:54:15.944 +01:00 [INF] [GET /FrontendFrontend/ItemBase "2025-12-07T17:54:15.9445210Z"] Start.
+2025-12-07 18:54:15.944 +01:00 [INF] [GET /Frontend/Frontend/Categories "2025-12-07T17:54:15.9446689Z"] End.
+2025-12-07 18:54:15.944 +01:00 [INF] [GET /FrontendFrontend/ItemBase "2025-12-07T17:54:15.9446728Z"] End.
+2025-12-07 18:54:15.944 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5128/Frontend/Frontend/Categories - 404 0 null 1.1568ms
+2025-12-07 18:54:15.944 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5128/FrontendFrontend/ItemBase - 404 0 null 1.064ms
+2025-12-07 18:54:15.944 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5128/Frontend/Frontend/Categories, Response status code: 404
+2025-12-07 18:54:15.945 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5128/FrontendFrontend/ItemBase, Response status code: 404
+2025-12-07 18:54:45.960 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5128/Frontend/Frontend/Categories - null null
+2025-12-07 18:54:45.961 +01:00 [INF] CORS policy execution successful.
+2025-12-07 18:54:45.962 +01:00 [INF] [GET /Frontend/Frontend/Categories "2025-12-07T17:54:45.9625896Z"] Start.
+2025-12-07 18:54:45.960 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5128/FrontendFrontend/ItemBase - null null
+2025-12-07 18:54:45.963 +01:00 [INF] [GET /Frontend/Frontend/Categories "2025-12-07T17:54:45.9631339Z"] End.
+2025-12-07 18:54:45.963 +01:00 [INF] CORS policy execution successful.
+2025-12-07 18:54:45.963 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5128/Frontend/Frontend/Categories - 404 0 null 3.4402ms
+2025-12-07 18:54:45.963 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5128/Frontend/Frontend/Categories, Response status code: 404
+2025-12-07 18:54:45.963 +01:00 [INF] [GET /FrontendFrontend/ItemBase "2025-12-07T17:54:45.9637482Z"] Start.
+2025-12-07 18:54:45.963 +01:00 [INF] [GET /FrontendFrontend/ItemBase "2025-12-07T17:54:45.9638589Z"] End.
+2025-12-07 18:54:45.964 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5128/FrontendFrontend/ItemBase - 404 0 null 3.9308ms
+2025-12-07 18:54:45.964 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5128/FrontendFrontend/ItemBase, Response status code: 404
+2025-12-07 18:55:16.147 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5128/api/Frontend/Categories - null null
+2025-12-07 18:55:16.149 +01:00 [INF] CORS policy execution successful.
+2025-12-07 18:55:16.149 +01:00 [INF] [GET /api/Frontend/Categories "2025-12-07T17:55:16.1496684Z"] Start.
+2025-12-07 18:55:16.151 +01:00 [INF] Executing endpoint 'Frontend.Controllers.FrontendController.GetCategories (Tarkony-aspdotnet-backend)'
+2025-12-07 18:55:16.156 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5128/api/Frontend/ItemBase - null null
+2025-12-07 18:55:16.158 +01:00 [INF] CORS policy execution successful.
+2025-12-07 18:55:16.158 +01:00 [INF] [GET /api/Frontend/ItemBase "2025-12-07T17:55:16.1588098Z"] Start.
+2025-12-07 18:55:16.158 +01:00 [INF] Executing endpoint 'Frontend.Controllers.FrontendController.GetItemBase (Tarkony-aspdotnet-backend)'
+2025-12-07 18:55:16.178 +01:00 [INF] Route matched with {action = "GetCategories", controller = "Frontend"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCategories() on controller Frontend.Controllers.FrontendController (Tarkony-aspdotnet-backend).
+2025-12-07 18:55:16.178 +01:00 [INF] Route matched with {action = "GetItemBase", controller = "Frontend"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetItemBase() on controller Frontend.Controllers.FrontendController (Tarkony-aspdotnet-backend).
+2025-12-07 18:55:17.581 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Categories.CategoryModel, Tarkony-aspdotnet-backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-07 18:55:17.662 +01:00 [INF] Executed action Frontend.Controllers.FrontendController.GetCategories (Tarkony-aspdotnet-backend) in 1480.1828ms
+2025-12-07 18:55:17.663 +01:00 [INF] Executed endpoint 'Frontend.Controllers.FrontendController.GetCategories (Tarkony-aspdotnet-backend)'
+2025-12-07 18:55:17.664 +01:00 [INF] [GET /api/Frontend/Categories "2025-12-07T17:55:17.6641728Z"] End.
+2025-12-07 18:55:17.667 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5128/api/Frontend/Categories - 200 null application/json; charset=utf-8 1520.0834ms
+2025-12-07 18:55:17.873 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Contracts.ItemBase.Items, Tarkony-aspdotnet-backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-07 18:55:17.904 +01:00 [INF] Executed action Frontend.Controllers.FrontendController.GetItemBase (Tarkony-aspdotnet-backend) in 1725.09ms
+2025-12-07 18:55:17.904 +01:00 [INF] Executed endpoint 'Frontend.Controllers.FrontendController.GetItemBase (Tarkony-aspdotnet-backend)'
+2025-12-07 18:55:17.904 +01:00 [INF] [GET /api/Frontend/ItemBase "2025-12-07T17:55:17.9049195Z"] End.
+2025-12-07 18:55:17.905 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5128/api/Frontend/ItemBase - 200 null application/json; charset=utf-8 1748.5131ms
+2025-12-07 18:55:49.330 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5128/error - null null
+2025-12-07 18:55:49.330 +01:00 [INF] [GET /error "2025-12-07T17:55:49.3308845Z"] Start.
+2025-12-07 18:55:49.330 +01:00 [INF] Executing endpoint 'Fetch.Controllers.ErrorController.HandleError (Tarkony-aspdotnet-backend)'
+2025-12-07 18:55:49.332 +01:00 [INF] Route matched with {action = "HandleError", controller = "Error"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult HandleError() on controller Fetch.Controllers.ErrorController (Tarkony-aspdotnet-backend).
+2025-12-07 18:55:49.333 +01:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-12-07 18:55:49.351 +01:00 [INF] Executed action Fetch.Controllers.ErrorController.HandleError (Tarkony-aspdotnet-backend) in 18.7042ms
+2025-12-07 18:55:49.351 +01:00 [INF] Executed endpoint 'Fetch.Controllers.ErrorController.HandleError (Tarkony-aspdotnet-backend)'
+2025-12-07 18:55:49.351 +01:00 [INF] [GET /error "2025-12-07T17:55:49.3514320Z"] End.
+2025-12-07 18:55:49.351 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5128/error - 500 null application/problem+json; charset=utf-8 21.0066ms
+2025-12-07 18:55:57.098 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5128/Fetch/Fetch/Items - null null
+2025-12-07 18:55:57.099 +01:00 [INF] [GET /Fetch/Fetch/Items "2025-12-07T17:55:57.0992876Z"] Start.
+2025-12-07 18:55:57.099 +01:00 [INF] Executing endpoint 'Fetch.Controllers.FetchController.GetItemsData (Tarkony-aspdotnet-backend)'
+2025-12-07 18:55:57.103 +01:00 [INF] Route matched with {action = "GetItemsData", controller = "Fetch"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetItemsData() on controller Fetch.Controllers.FetchController (Tarkony-aspdotnet-backend).
+2025-12-07 18:55:57.104 +01:00 [INF] Items GraphQL fetch started
+2025-12-07 18:55:57.110 +01:00 [INF] Start processing HTTP request POST https://api.tarkov.dev/graphql
+2025-12-07 18:55:57.111 +01:00 [INF] Sending HTTP request POST https://api.tarkov.dev/graphql
+2025-12-07 18:56:04.065 +01:00 [INF] Received HTTP response headers after 6951.9904ms - 200
+2025-12-07 18:56:04.065 +01:00 [INF] End processing HTTP request after 6955.9461ms - 200
+2025-12-07 18:56:05.714 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Items.External.ItemsModel, Tarkony-aspdotnet-backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-07 18:56:05.895 +01:00 [INF] Executed action Fetch.Controllers.FetchController.GetItemsData (Tarkony-aspdotnet-backend) in 8791.4468ms
+2025-12-07 18:56:05.895 +01:00 [INF] Executed endpoint 'Fetch.Controllers.FetchController.GetItemsData (Tarkony-aspdotnet-backend)'
+2025-12-07 18:56:05.895 +01:00 [INF] [GET /Fetch/Fetch/Items "2025-12-07T17:56:05.8953041Z"] End.
+2025-12-07 18:56:05.895 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5128/Fetch/Fetch/Items - 200 null application/json; charset=utf-8 8796.0577ms
+2025-12-07 18:56:39.482 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5128/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-07 18:56:39.482 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5128/_framework/aspnetcore-browser-refresh.js - 200 16459 application/javascript; charset=utf-8 0.5349ms
+2025-12-07 18:56:40.153 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5128/swagger/v1/swagger.json - null null
+2025-12-07 18:56:40.164 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5128/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 11.3465ms
+2025-12-07 18:56:44.029 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5128/Fetch/Fetch/Categories - null null
+2025-12-07 18:56:44.030 +01:00 [INF] [GET /Fetch/Fetch/Categories "2025-12-07T17:56:44.0306772Z"] Start.
+2025-12-07 18:56:44.030 +01:00 [INF] Executing endpoint 'Fetch.Controllers.FetchController.GetCategoriesData (Tarkony-aspdotnet-backend)'
+2025-12-07 18:56:44.035 +01:00 [INF] Route matched with {action = "GetCategoriesData", controller = "Fetch"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCategoriesData() on controller Fetch.Controllers.FetchController (Tarkony-aspdotnet-backend).
+2025-12-07 18:56:44.036 +01:00 [INF] Categories GraphQL fetch started
+2025-12-07 18:56:44.038 +01:00 [INF] Start processing HTTP request POST https://api.tarkov.dev/graphql
+2025-12-07 18:56:44.038 +01:00 [INF] Sending HTTP request POST https://api.tarkov.dev/graphql
+2025-12-07 18:56:44.318 +01:00 [INF] Received HTTP response headers after 279.9633ms - 200
+2025-12-07 18:56:44.318 +01:00 [INF] End processing HTTP request after 280.426ms - 200
+2025-12-07 18:56:44.324 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Categories.CategoryModel, Tarkony-aspdotnet-backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-07 18:56:44.325 +01:00 [INF] Executed action Fetch.Controllers.FetchController.GetCategoriesData (Tarkony-aspdotnet-backend) in 289.9023ms
+2025-12-07 18:56:44.325 +01:00 [INF] Executed endpoint 'Fetch.Controllers.FetchController.GetCategoriesData (Tarkony-aspdotnet-backend)'
+2025-12-07 18:56:44.325 +01:00 [INF] [GET /Fetch/Fetch/Categories "2025-12-07T17:56:44.3254810Z"] End.
+2025-12-07 18:56:44.325 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5128/Fetch/Fetch/Categories - 200 null application/json; charset=utf-8 296.3674ms
+2025-12-07 18:56:55.093 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5128/api/Frontend/Categories - null null
+2025-12-07 18:56:55.094 +01:00 [INF] [GET /api/Frontend/Categories "2025-12-07T17:56:55.0942776Z"] Start.
+2025-12-07 18:56:55.094 +01:00 [INF] Executing endpoint 'Frontend.Controllers.FrontendController.GetCategories (Tarkony-aspdotnet-backend)'
+2025-12-07 18:56:55.094 +01:00 [INF] Route matched with {action = "GetCategories", controller = "Frontend"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCategories() on controller Frontend.Controllers.FrontendController (Tarkony-aspdotnet-backend).
+2025-12-07 18:56:55.301 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Categories.CategoryModel, Tarkony-aspdotnet-backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-07 18:56:55.301 +01:00 [INF] Executed action Frontend.Controllers.FrontendController.GetCategories (Tarkony-aspdotnet-backend) in 207.0389ms
+2025-12-07 18:56:55.301 +01:00 [INF] Executed endpoint 'Frontend.Controllers.FrontendController.GetCategories (Tarkony-aspdotnet-backend)'
+2025-12-07 18:56:55.301 +01:00 [INF] [GET /api/Frontend/Categories "2025-12-07T17:56:55.3019223Z"] End.
+2025-12-07 18:56:55.302 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5128/api/Frontend/Categories - 200 null application/json; charset=utf-8 208.4656ms
+2025-12-07 18:57:10.651 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5128/api/Frontend/ItemBase - null null
+2025-12-07 18:57:10.651 +01:00 [INF] [GET /api/Frontend/ItemBase "2025-12-07T17:57:10.6516953Z"] Start.
+2025-12-07 18:57:10.651 +01:00 [INF] Executing endpoint 'Frontend.Controllers.FrontendController.GetItemBase (Tarkony-aspdotnet-backend)'
+2025-12-07 18:57:10.651 +01:00 [INF] Route matched with {action = "GetItemBase", controller = "Frontend"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetItemBase() on controller Frontend.Controllers.FrontendController (Tarkony-aspdotnet-backend).
+2025-12-07 18:57:11.079 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Contracts.ItemBase.Items, Tarkony-aspdotnet-backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-07 18:57:11.089 +01:00 [INF] Executed action Frontend.Controllers.FrontendController.GetItemBase (Tarkony-aspdotnet-backend) in 437.2041ms
+2025-12-07 18:57:11.089 +01:00 [INF] Executed endpoint 'Frontend.Controllers.FrontendController.GetItemBase (Tarkony-aspdotnet-backend)'
+2025-12-07 18:57:11.089 +01:00 [INF] [GET /api/Frontend/ItemBase "2025-12-07T17:57:11.0893712Z"] End.
+2025-12-07 18:57:11.089 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5128/api/Frontend/ItemBase - 200 null application/json; charset=utf-8 438.0254ms
+2025-12-07 18:57:54.692 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5128/api/Frontend/ItemDetail/5447a9cd4bdc2dbd208b4567 - null null
+2025-12-07 18:57:54.693 +01:00 [INF] [GET /api/Frontend/ItemDetail/5447a9cd4bdc2dbd208b4567 "2025-12-07T17:57:54.6930187Z"] Start.
+2025-12-07 18:57:54.693 +01:00 [INF] Executing endpoint 'Frontend.Controllers.FrontendController.GetItemDetail (Tarkony-aspdotnet-backend)'
+2025-12-07 18:57:54.703 +01:00 [INF] Route matched with {action = "GetItemDetail", controller = "Frontend"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetItemDetail(System.String) on controller Frontend.Controllers.FrontendController (Tarkony-aspdotnet-backend).
+2025-12-07 18:57:54.791 +01:00 [INF] Executing OkObjectResult, writing value of type 'Contracts.ItemDetail.Items'.
+2025-12-07 18:57:54.802 +01:00 [INF] Executed action Frontend.Controllers.FrontendController.GetItemDetail (Tarkony-aspdotnet-backend) in 98.6912ms
+2025-12-07 18:57:54.802 +01:00 [INF] Executed endpoint 'Frontend.Controllers.FrontendController.GetItemDetail (Tarkony-aspdotnet-backend)'
+2025-12-07 18:57:54.802 +01:00 [INF] [GET /api/Frontend/ItemDetail/5447a9cd4bdc2dbd208b4567 "2025-12-07T17:57:54.8027643Z"] End.
+2025-12-07 18:57:54.802 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5128/api/Frontend/ItemDetail/5447a9cd4bdc2dbd208b4567 - 200 null application/json; charset=utf-8 110.2666ms

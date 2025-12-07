@@ -3,6 +3,7 @@ builder.Host.UseSeriLogLogging();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddRateLimiterExtension();
 
 builder.Services.AddGraphQL();
 
@@ -10,14 +11,15 @@ builder.Services.AddMongo(builder.Configuration);
 
 //builder.Services.AddQuartzJobs();
 
-builder.Services.AddCorsPolicy();
+builder.Services.AddCorsPolicy(builder.Environment);
 
 //builder.Services.AddJWTAuth();
-
+builder.Services.AddHealthChecks();
 var app = builder.Build();
 
 //app.UseAppPipeline(app.Environment);
 app.UseMiddleware<GlobalExceptionMiddleware>();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
@@ -31,11 +33,13 @@ else
 }
 
 app.UseRouting();
-app.UseCors("AllowTarkonyFrontendOnly");
+app.UseCors(app.Environment.IsDevelopment() ? "DevCors" : "ProdCors");
+
 app.UseRateLimiter();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseLoggerExtension(); // log + traceId
 app.MapControllers();
+app.MapHealthChecks("/health");
 
 app.Run();

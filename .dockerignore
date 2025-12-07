@@ -1,0 +1,34 @@
+Tarkony-aspdotnet-backend/Controllers/FetchController.cs
+Tarkony-aspdotnet-backend/Controllers/MongoController.cs
+Tarkony-aspdotnet-backend/Controllers/QuartzController.cs
+Tarkony-aspdotnet-backend\appsettings.Development.json
+
+
+# Build output
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.swp
+*.tmp
+
+# IDE settings
+.vscode/
+.idea/
+*.csproj.user
+
+# Git
+.git/
+.gitignore
+
+# Logs
+*.log
+
+# Docker files (ha több van)
+docker-compose.override.yml
+.dockerignore
+
+# Test projects
+tests/
