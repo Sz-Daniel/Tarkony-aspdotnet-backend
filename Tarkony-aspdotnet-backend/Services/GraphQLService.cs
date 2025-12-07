@@ -1,279 +1,322 @@
 using Categories;
-using Item;
-using ItemBase;
+using Items.External;
+
 namespace GraphQL
 {
-  public class GraphQLRequest
-{
-    public string Query { get; set; } = string.Empty;
-    public object? Variables { get; set; }
-}
-
-public class GraphQLService
-{
-  
-    private readonly HttpClient _client;
-
-    public GraphQLService(IHttpClientFactory factory)
+    public class GraphQLRequest
     {
-        _client = factory.CreateClient("GraphQLClient");
+        public string Query { get; set; } = string.Empty;
+        public object? Variables { get; set; }
     }
 
-   public async Task<List<ItemBaseModel>> FetchItemDetailAsync()
+    public class GraphQLService
     {
-        var request = new GraphQLRequest
+        private readonly HttpClient _client;
+
+        public GraphQLService(IHttpClientFactory factory)
         {
-            Query = queries["ItemBaseQuery"]
-        };
+            _client = factory.CreateClient("GraphQLClient");
+        }
 
-        var response = await _client.PostAsJsonAsync("", request);
-
-        if (!response.IsSuccessStatusCode)
-            throw new Exception($"GraphQL HTTP error: {response.StatusCode}");
-
-        var json = await response.Content.ReadFromJsonAsync<GraphQLResponse<ItemBaseList>>();
-
-        if (json?.Errors != null && json.Errors.Any())
-            throw new Exception($"GraphQL errors: {string.Join(';', json.Errors.Select(e => e.Message))}");
-
-        // Itt már csak a lista kell
-        return json?.Data?.Items ?? new List<ItemBaseModel>();
-    }
-
-    public async Task<List<ItemBaseModel>> FetchItemBaseAsync()
-    {
-        var request = new GraphQLRequest
+        public async Task<List<CategoryModel>> FetchAPIStatusAsync()
         {
-            Query = queries["ItemBaseQuery"]
-        };
+            var request = new GraphQLRequest { Query = queries["APIStatusQuery"] };
 
-        var response = await _client.PostAsJsonAsync("", request);
+            var response = await _client.PostAsJsonAsync("", request);
 
-        if (!response.IsSuccessStatusCode)
-            throw new Exception($"GraphQL HTTP error: {response.StatusCode}");
+            if (!response.IsSuccessStatusCode)
+                throw new Exception($"GraphQL HTTP error: {response.StatusCode}");
 
-        var json = await response.Content.ReadFromJsonAsync<GraphQLResponse<ItemBaseList>>();
+            var json = await response.Content.ReadFromJsonAsync<GraphQLResponse<CategoryList>>();
 
-        if (json?.Errors != null && json.Errors.Any())
-            throw new Exception($"GraphQL errors: {string.Join(';', json.Errors.Select(e => e.Message))}");
+            if (json?.Errors != null && json.Errors.Any())
+                throw new Exception(
+                    $"GraphQL errors: {string.Join(';', json.Errors.Select(e => e.Message))}"
+                );
 
-        // Itt már csak a lista kell
-        return json?.Data?.Items ?? new List<ItemBaseModel>();
-    }
+            return json?.Data?.ItemCategories ?? new List<CategoryModel>();
+        }
 
-
-    public async Task<List<CategoryModel>> FetchCategoriesAsync()
-    {
-        var request = new GraphQLRequest
+        public async Task<List<CategoryModel>> FetchCategoriesAsync()
         {
-            Query = queries["CategoriesQuery"]
-        };
+            var request = new GraphQLRequest { Query = queries["CategoriesQuery"] };
 
-        var response = await _client.PostAsJsonAsync("", request);
+            var response = await _client.PostAsJsonAsync("", request);
 
-        if (!response.IsSuccessStatusCode)
-            throw new Exception($"GraphQL HTTP error: {response.StatusCode}");
+            if (!response.IsSuccessStatusCode)
+                throw new Exception($"GraphQL HTTP error: {response.StatusCode}");
 
-        var json = await response.Content.ReadFromJsonAsync<GraphQLResponse<CategoryList>>();
+            var json = await response.Content.ReadFromJsonAsync<GraphQLResponse<CategoryList>>();
 
-        if (json?.Errors != null && json.Errors.Any())
-            throw new Exception($"GraphQL errors: {string.Join(';', json.Errors.Select(e => e.Message))}");
+            if (json?.Errors != null && json.Errors.Any())
+                throw new Exception(
+                    $"GraphQL errors: {string.Join(';', json.Errors.Select(e => e.Message))}"
+                );
 
-        return json?.Data?.ItemCategories ?? new List<CategoryModel>();
-    }
-    
-    private static readonly Dictionary<string, string> queries = new()
-    {
-      { "StatusQuery",@"query {
-      status {
-      currentStatuses { message name status statusCode }
-      generalStatus { message name status statusCode }
-      messages { content solveTime statusCode time type }
-      }
-      }"},
-      { "CategoriesQuery", @"query{
-      itemCategories {
-      id
-      name
-      normalizedName
-      children { normalizedName }
-      parent { normalizedName }
-      }
-      }"},
+            return json?.Data?.ItemCategories ?? new List<CategoryModel>();
+        }
 
-      { "ItemBaseQuery", @" query {
-      items(limit: 2) {
-      id
-      name
-      category { normalizedName }
-      gridImageLink
-      changeLast48h
-      changeLast48hPercent
-      sellFor { priceRUB vendor { name } }
-      buyFor { priceRUB vendor { name } }
-      }
-      }"},
-      { "ItemDetailQuery", @" query {
-      items(limit: 2) {
-      id
-      name
-      category { normalizedName }
-      gridImageLink
-      changeLast48h
-      changeLast48hPercent
-      sellFor { priceRUB vendor { name } }
-      buyFor { priceRUB vendor { name } }
-      }
-      }"},
-
-
-      { "ItemsQuery", @" query {
-      items(limit: 2) {
-
-      id
-      name
-      shortName
-      categories { name }
-      lastLowPrice
-      low24hPrice
-      avg24hPrice
-      high24hPrice
-      changeLast48hPercent
-      changeLast48h
-      lastOfferCount
-      width
-      weight
-      hasGrid
-      inspectImageLink
-      backgroundColor
-      gridImageLink
-      description
-      wikiLink
-      height
-      velocity
-      recoilModifier
-      loudness
-      accuracyModifier
-      ergonomicsModifier
-      updated
-      sellFor { currency price priceRUB
-      vendor { name
-      ... on FleaMarket { foundInRaidRequired }
-      }
-      }
-
-      buyFor { currency price priceRUB
-      vendor {
-      ... on TraderOffer { minTraderLevel buyLimit
-      trader { name imageLink
-      levels { level requiredPlayerLevel requiredReputation requiredCommerce }
-      }
-      taskUnlock { name minPlayerLevel }
-      }
-      }
-      }
-
-      bartersUsing { id level buyLimit
-      taskUnlock { name minPlayerLevel
-      }
-      trader { name imageLink
-      levels { level requiredPlayerLevel requiredReputation requiredCommerce }
-      }
-      rewardItems { count
-      item { id gridImageLink name }
-      }
-      requiredItems { count
-      item { id gridImageLink name }
-      }
-      }  
-
-      bartersFor { id level buyLimit
-      taskUnlock { name minPlayerLevel }
-      trader { name imageLink
-      levels { level requiredPlayerLevel requiredReputation requiredCommerce }
-      }
-      rewardItems { count
-      item { id gridImageLink name }
-      }
-      requiredItems { count
-      item { id gridImageLink name}
-      }
-      } 
-
-      craftsUsing { id duration level
-      station { name imageLink }
-      taskUnlock { name minPlayerLevel }
-      rewardItems { count
-      item { id gridImageLink name }
-      }
-      requiredItems { count
-      item { id gridImageLink name }
-      }
-      }  
-
-      craftsFor { id duration level
-      station { name imageLink }
-      taskUnlock { name minPlayerLevel }
-      rewardItems { count
-      item { id gridImageLink name }
-      }
-      requiredItems { count
-      item { id gridImageLink name }
-      }
-      }
-
-      usedInTasks { name
-      objectives {
-      ... on TaskObjectiveItem { description count
-      item { name }
-      }
-      }
-      }
-      receivedFromTasks { name
-      finishRewards {
-      items { count
-      item { name }
-      }
-      }
-      }
-      }
-      }"},
-
-        //Query = queries["ItemsQuery"];
-    };
-}
-
-public class GraphQLResponse<TData>
-{
-    public TData? Data { get; set; }
-    public List<GraphQLError>? Errors { get; set; }
-}
-public class GraphQLError
-{
-    public string Message { get; set; } = "";
-}
-
-}
-
-
-/**
-    public async Task<List<ItemModel>> FetchItemsAsync()
-    {
-        var request = new GraphQLRequest
+        public async Task<List<ItemsModel>> FetchItemsAsync()
         {
-            Query = queries["ItemsQuery"]
-        };
-        var response = await _client.PostAsJsonAsync("", request);
+            var request = new GraphQLRequest { Query = queries["ItemsQuery"] };
 
-        if (!response.IsSuccessStatusCode)
-            throw new Exception($"GraphQL HTTP error: {response.StatusCode}");
+            var response = await _client.PostAsJsonAsync("", request);
 
-        var json = await response.Content.ReadFromJsonAsync<GraphQLResponse<ItemList>>();
+            if (!response.IsSuccessStatusCode)
+                throw new Exception($"GraphQL HTTP error: {response.StatusCode}");
 
-        if (json?.Errors != null && json.Errors.Any())
-            throw new Exception($"GraphQL errors: {string.Join(';', json.Errors.Select(e => e.Message))}");
+            var json = await response.Content.ReadFromJsonAsync<GraphQLResponse<ItemsList>>();
 
-        return json?.Data.Items ?? new List<ItemModel>();
+            if (json?.Errors != null && json.Errors.Any())
+                throw new Exception(
+                    $"GraphQL errors: {string.Join(';', json.Errors.Select(e => e.Message))}"
+                );
+
+            return json?.Data?.Items ?? new List<ItemsModel>();
+        }
+
+        private static readonly Dictionary<string, string> queries =
+            new()
+            {
+                //Query = queries["ItemsQuery"];
+                {
+                    "APIStatusQuery",
+                    @"query {
+        status {
+        currentStatuses { message name status statusCode }
+        generalStatus { message name status statusCode }
+        messages { content solveTime statusCode time type }
+        }
+        }"
+                },
+                {
+                    "CategoriesQuery",
+                    @"query{
+        itemCategories {
+        id
+        name
+        normalizedName
+        children { normalizedName }
+        parent { normalizedName }
+        }
+        }"
+                },
+                {
+                    "ItemsQuery",
+                    @" query {
+            items {
+                id
+                name
+                category {
+                normalizedName
+                }
+                gridImageLink
+                changeLast48h
+                changeLast48hPercent
+                normalizedName
+                wikiLink
+                sellFor {
+                currency
+                price
+                priceRUB
+                vendor {
+                    name
+                    ... on FleaMarket {
+                    foundInRaidRequired
+                    }
+                }
+                }
+                buyFor {
+                currency
+                price
+                priceRUB
+                vendor {
+                    name
+                    ... on TraderOffer {
+                    minTraderLevel
+                    buyLimit
+                    trader {
+                        name
+                        imageLink
+                        levels {
+                        level
+                        requiredPlayerLevel
+                        requiredReputation
+                        requiredCommerce
+                        }
+                    }
+                    taskUnlock {
+                        name
+                        minPlayerLevel
+                    }
+                    }
+                }
+                }
+                bartersUsing {
+                id
+                level
+                buyLimit
+                taskUnlock {
+                    name
+                    minPlayerLevel
+                }
+                trader {
+                    name
+                    imageLink
+                    levels {
+                    level
+                    requiredPlayerLevel
+                    requiredReputation
+                    requiredCommerce
+                    }
+                }
+                rewardItems {
+                    count
+                    item {
+                    id
+                    gridImageLink
+                    name
+                    }
+                }
+                requiredItems {
+                    count
+                    item {
+                    id
+                    gridImageLink
+                    name
+                    }
+                }
+                }
+                bartersFor {
+                id
+                level
+                buyLimit
+                taskUnlock {
+                    name
+                    minPlayerLevel
+                }
+                trader {
+                    name
+                    imageLink
+                    levels {
+                    level
+                    requiredPlayerLevel
+                    requiredReputation
+                    requiredCommerce
+                    }
+                }
+                rewardItems {
+                    count
+                    item {
+                    id
+                    gridImageLink
+                    name
+                    }
+                }
+                requiredItems {
+                    count
+                    item {
+                    id
+                    gridImageLink
+                    name
+                    }
+                }
+                }
+                craftsUsing {
+                id
+                duration
+                level
+                station {
+                    name
+                    imageLink
+                }
+                taskUnlock {
+                    name
+                    minPlayerLevel
+                }
+                rewardItems {
+                    count
+                    item {
+                    id
+                    gridImageLink
+                    name
+                    }
+                }
+                requiredItems {
+                    count
+                    item {
+                    id
+                    gridImageLink
+                    name
+                    }
+                }
+                }
+                craftsFor {
+                id
+                duration
+                level
+                station {
+                    name
+                    imageLink
+                }
+                taskUnlock {
+                    name
+                    minPlayerLevel
+                }
+                rewardItems {
+                    count
+                    item {
+                    id
+                    gridImageLink
+                    name
+                    }
+                }
+                requiredItems {
+                    count
+                    item {
+                    id
+                    gridImageLink
+                    name
+                    }
+                }
+                }
+                usedInTasks {
+                name
+                objectives {
+                    ... on TaskObjectiveItem {
+                    description
+                    count
+                    item {
+                        name
+                    }
+                    }
+                }
+                }
+                receivedFromTasks {
+                name
+                finishRewards {
+                    items {
+                    count
+                    item {
+                        name
+                    }
+                    }
+                }
+                }
+            }
+            }"
+                },
+            };
     }
 
-*/
+    public class GraphQLResponse<TData>
+    {
+        public TData? Data { get; set; }
+        public List<GraphQLError>? Errors { get; set; }
+    }
+
+    public class GraphQLError
+    {
+        public string Message { get; set; } = "";
+    }
+}

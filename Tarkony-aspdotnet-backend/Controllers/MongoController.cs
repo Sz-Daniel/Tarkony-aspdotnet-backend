@@ -1,53 +1,32 @@
-using System;
-using Categories;
-using Item;
-using ItemBase;
 using Microsoft.AspNetCore.Mvc;
 using Mongo.Services;
 
-
-namespace Mongo.Controllers; 
+namespace Mongo.Controllers;
 
 [Controller]
-[Route("mongodb/[controller]")]
-public class MongoController: Controller {
-
-    //DI
+[Route("Mongo/[controller]")]
+public class MongoController : Controller
+{
     private readonly MongoDBService _mongoDBService;
-    public MongoController(MongoDBService mongoDBService) {
+
+    public MongoController(MongoDBService mongoDBService)
+    {
         _mongoDBService = mongoDBService;
     }
 
-    // Get section
-
-/**
-    [HttpGet("GetCategories")]
-    public async Task<List<CategoryModel>> GetCategories()
+    [HttpGet("SearchItemByName")]
+    public async Task<IActionResult> SearchItemByName([FromRoute] string name)
     {
-        return await _mongoDBService.GetCategoriesAsync();
+        try
+        {
+            var result = await _mongoDBService.GetSearcByNamehAsync(name);
+            return Ok(result);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { error = ex.Message });
+        }
     }
-
-    [HttpGet("GetItemBase")]
-    public async Task<List<ItemBaseModel>> GetItemBase()
-    {
-        return await _mongoDBService.GetItemBaseAsync();
-    }
-*/
-
-
-}
-
-// Manually "Forced" database function calls
-
-[Controller]
-[Route("mongodb/forced/[controller]")]
-public class MongoForcedController: Controller {
-    
-    private readonly MongoDBService _mongoDBService;
-    public MongoForcedController(MongoDBService mongoDBService) {
-        _mongoDBService = mongoDBService;
-    }
-
 
     [HttpGet("ForceCategoriesDump")]
     public async Task<IActionResult> ForceCategoriesDump()
@@ -64,13 +43,13 @@ public class MongoForcedController: Controller {
         }
     }
 
-    [HttpGet("ForceItemBaseDump")]
-    public async Task<IActionResult> FetchItemBaseDump()
+    [HttpGet("ForceItemsDump")]
+    public async Task<IActionResult> FetchItemsDump()
     {
         try
         {
-            var result = await _mongoDBService.FetchItemBaseUploadAsync();
-            return Created("api/items/ForceItemBaseDump", result);
+            var result = await _mongoDBService.FetchItemsUploadAsync();
+            return Created("api/items/ForceItemsDump", result);
         }
         catch (Exception ex)
         {
@@ -78,7 +57,4 @@ public class MongoForcedController: Controller {
             return StatusCode(500, new { error = ex.Message });
         }
     }
-
-
 }
-

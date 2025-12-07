@@ -1,0 +1,266 @@
+{
+  "_id": "5447a9cd4bdc2dbd208b4567",
+  "Name": "Colt M4A1 5.56x45 assault rifle",
+  "GridImageLink": "https://assets.tarkov.dev/5447a9cd4bdc2dbd208b4567-grid-image.webp",
+  "ChangeLast48h": null,
+  "ChangeLast48hPercent": null,
+  "NormalizedName": "colt-m4a1-556x45-assault-rifle",
+  "WikiLink": "https://escapefromtarkov.fandom.com/wiki/Colt_M4A1_5.56x45_assault_rifle",
+  "Category": {
+    "NormalizedName": "assault-rifle"
+  },
+  "SellFor": [
+    {
+      "Currency": "RUB",
+      "Price": 9198,
+      "PriceRUB": 9198,
+      "Vendor": {
+        "FoundInRaidRequired": null,
+        "Name": "Prapor"
+      }
+    },
+    {
+      "Currency": "RUB",
+      "Price": 5519,
+      "PriceRUB": 5519,
+      "Vendor": {
+        "FoundInRaidRequired": null,
+        "Name": "Fence"
+      }
+    },
+    {
+      "Currency": "RUB",
+      "Price": 9014,
+      "PriceRUB": 9014,
+      "Vendor": {
+        "FoundInRaidRequired": null,
+        "Name": "Skier"
+      }
+    },
+    {
+      "Currency": "USD",
+      "Price": 71,
+      "PriceRUB": 8278,
+      "Vendor": {
+        "FoundInRaidRequired": null,
+        "Name": "Peacekeeper"
+      }
+    },
+    {
+      "Currency": "RUB",
+      "Price": 10302,
+      "PriceRUB": 10302,
+      "Vendor": {
+        "FoundInRaidRequired": null,
+        "Name": "Mechanic"
+      }
+    },
+    {
+      "Currency": "RUB",
+      "Price": 9198,
+      "PriceRUB": 9198,
+      "Vendor": {
+        "FoundInRaidRequired": null,
+        "Name": "Ref"
+      }
+    },
+    {
+      "Currency": "RUB",
+      "Price": 28888,
+      "PriceRUB": 28888,
+      "Vendor": {
+        "FoundInRaidRequired": false,
+        "Name": "Flea Market"
+      }
+    }
+  ],
+  "BuyFor": [
+    {
+      "Currency": "RUB",
+      "Price": 18397,
+      "PriceRUB": 18397,
+      "Vendor": {
+        "FoundInRaidRequired": null,
+        "Name": "Mechanic"
+      },
+      "Trader": null,
+      "TaskUnlock": null
+    },
+    {
+      "Currency": "RUB",
+      "Price": 47203,
+      "PriceRUB": 47203,
+      "Vendor": {
+        "FoundInRaidRequired": null,
+        "Name": "Flea Market"
+      },
+      "Trader": null,
+      "TaskUnlock": null
+    }
+  ],
+  "BartersUsing": [],
+  "BartersFor": [],
+  "CraftsUsing": [],
+  "CraftsFor": [],
+  "UsedInTasks": [
+    {
+      "Name": "Wet Job - Part 1",
+      "Objectives": [
+        {
+          "Description": null,
+          "Count": 0,
+          "Item": null
+        }
+      ]
+    },
+    {
+      "Name": "Gunsmith - Part 7",
+      "Objectives": [
+        {
+          "Description": null,
+          "Count": 0,
+          "Item": null
+        }
+      ]
+    },
+    {
+      "Name": "The Punisher - Part 5",
+      "Objectives": [
+        {
+          "Description": "Find any Kalashnikov AK-74 assault rifle in raid",
+          "Count": 1,
+          "Item": {
+            "Name": "Kalashnikov AK-74N 5.45x39 assault rifle"
+          }
+        },
+        {
+          "Description": "Hand over the AK-74",
+          "Count": 1,
+          "Item": {
+            "Name": "Kalashnikov AK-74N 5.45x39 assault rifle"
+          }
+        },
+        {
+          "Description": "Find a Colt M4A1 assault rifle in raid",
+          "Count": 1,
+          "Item": {
+            "Name": "Colt M4A1 5.56x45 assault rifle"
+          }
+        },
+        {
+          "Description": "Hand over the M4A1",
+          "Count": 1,
+          "Item": {
+            "Name": "Colt M4A1 5.56x45 assault rifle"
+          }
+        },
+        {
+          "Description": "Find any Makarov PM pistols in raid",
+          "Count": 2,
+          "Item": {
+            "Name": "Makarov PM 9x18PM pistol"
+          }
+        },
+        {
+          "Description": "Hand over the pistols",
+          "Count": 2,
+          "Item": {
+            "Name": "Makarov PM 9x18PM pistol"
+          }
+        },
+        {
+          "Description": null,
+          "Count": 0,
+          "Item": null
+        }
+      ]
+    },
+    {
+      "Name": "Gendarmerie - District Patrol",
+      "Objectives": [
+        {
+          "Description": null,
+          "Count": 0,
+          "Item": null
+        }
+      ]
+    },
+    {
+      "Name": "Worst Job in the World",
+      "Objectives": [
+        {
+          "Description": null,
+          "Count": 0,
+          "Item": null
+        }
+      ]
+    },
+    {
+      "Name": "The Good Times - Part 1",
+      "Objectives": [
+        {
+          "Description": null,
+          "Count": 0,
+          "Item": null
+        }
+      ]
+    },
+    {
+      "Name": "Peacekeeping Mission",
+      "Objectives": [
+        {
+          "Description": null,
+          "Count": 0,
+          "Item": null
+        },
+        {
+          "Description": null,
+          "Count": 0,
+          "Item": null
+        },
+        {
+          "Description": null,
+          "Count": 0,
+          "Item": null
+        },
+        {
+          "Description": null,
+          "Count": 0,
+          "Item": null
+        },
+        {
+          "Description": null,
+          "Count": 0,
+          "Item": null
+        },
+        {
+          "Description": null,
+          "Count": 0,
+          "Item": null
+        }
+      ]
+    },
+    {
+      "Name": "Gunsmith - Part 22",
+      "Objectives": [
+        {
+          "Description": null,
+          "Count": 0,
+          "Item": null
+        }
+      ]
+    },
+    {
+      "Name": "Compensation for Damage - Collection",
+      "Objectives": [
+        {
+          "Description": "Hand over the found in raid Colt M4A1 assault rifles",
+          "Count": 2,
+          "Item": {
+            "Name": "Colt M4A1 5.56x45 assault rifle"
+          }
+        }
+      ]
+    }
+  ]
+}

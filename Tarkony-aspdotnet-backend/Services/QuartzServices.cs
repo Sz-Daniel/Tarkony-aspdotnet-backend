@@ -1,12 +1,21 @@
-using Quartz;
 using Mongo.Services;
+using Quartz;
+
 public interface IQuartzJobScheduler
 {
-    Task ScheduleJobAsync<TJob>(TimeSpan delay, string userId, string message, CancellationToken cancellationToken) where TJob : IJob;
-    
+    Task ScheduleJobAsync<TJob>(
+        TimeSpan delay,
+        string userId,
+        string message,
+        CancellationToken cancellationToken
+    )
+        where TJob : IJob;
 }
 
-public class QuartzJobScheduler(ISchedulerFactory schedulerFactory, ILogger<QuartzJobScheduler> logger) : IQuartzJobScheduler
+public class QuartzJobScheduler(
+    ISchedulerFactory schedulerFactory,
+    ILogger<QuartzJobScheduler> logger
+) : IQuartzJobScheduler
 {
     private readonly ISchedulerFactory _schedulerFactory = schedulerFactory;
     private IScheduler? _scheduler;
@@ -18,20 +27,30 @@ public class QuartzJobScheduler(ISchedulerFactory schedulerFactory, ILogger<Quar
         await _scheduler.Start(cancellationToken);
     }
 
-    public async Task ScheduleJobAsync<TJob>(TimeSpan delay, string userId, string message, CancellationToken cancellationToken) where TJob : IJob
+    public async Task ScheduleJobAsync<TJob>(
+        TimeSpan delay,
+        string userId,
+        string message,
+        CancellationToken cancellationToken
+    )
+        where TJob : IJob
     {
-        _logger.LogInformation("Scheduling job {JobName} for user {UserId} with message {Message}", typeof(TJob).Name, userId, message);
+        _logger.LogInformation(
+            "Scheduling job {JobName} for user {UserId} with message {Message}",
+            typeof(TJob).Name,
+            userId,
+            message
+        );
 
-        var jobDetail = JobBuilder.Create<TJob>()
+        var jobDetail = JobBuilder
+            .Create<TJob>()
             .WithIdentity($"{typeof(TJob).Name}-{userId}")
             .UsingJobData("userId", userId)
             .UsingJobData("message", message)
             .Build();
 
         var scheduler = await _schedulerFactory.GetScheduler();
-        var trigger = TriggerBuilder.Create()
-            .StartAt(DateTimeOffset.Now.Add(delay))
-            .Build();
+        var trigger = TriggerBuilder.Create().StartAt(DateTimeOffset.Now.Add(delay)).Build();
 
         await scheduler.ScheduleJob(jobDetail, trigger, cancellationToken);
     }
@@ -48,10 +67,8 @@ public class PriceUpdate : IJob
 
     public async Task Execute(IJobExecutionContext context)
     {
-        
         //await _service.FetchItemUploadAsync();
 
-        // vagy bármilyen más logika
         Console.WriteLine($"Job Dob: {DateTime.Now}");
     }
 }
@@ -67,10 +84,8 @@ public class DataRefresh : IJob
 
     public async Task Execute(IJobExecutionContext context)
     {
-        
         //await _service.FetchItemUploadAsync();
 
-       
         Console.WriteLine($"Job Done: {DateTime.Now}");
     }
 }

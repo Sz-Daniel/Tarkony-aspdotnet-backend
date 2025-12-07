@@ -1,39 +1,40 @@
-using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 using GraphQL;
-namespace MyApi.Controllers
+using Items.Adapter;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Fetch.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
-    public class ItemsController : ControllerBase
+    [Route("fetch/[controller]")]
+    public class FetchController : ControllerBase
     {
         private readonly GraphQLService _service;
-        private readonly ILogger<ItemsController> _logger;
-        public ItemsController(GraphQLService service, ILogger<ItemsController> logger)
+        private readonly ILogger<FetchController> _logger;
+
+        public FetchController(GraphQLService service, ILogger<FetchController> logger)
         {
             _service = service;
             _logger = logger;
         }
-        
+
+        [HttpGet("Items")]
+        public async Task<IActionResult> GetItemsData()
+        {
+            _logger.LogInformation("Items GraphQL fetch started");
+            var items = await _service.FetchItemsAsync();
+            return Ok(items);
+        }
+
         [HttpGet("Categories")]
         public async Task<IActionResult> GetCategoriesData()
         {
             _logger.LogInformation("Categories GraphQL fetch started");
             var items = await _service.FetchCategoriesAsync();
-        
-            return Ok(items); 
+            return Ok(items);
         }
-
-        [HttpGet("ItemBase")]
-        public async Task<IActionResult> GetItemBaseData()
-        {
-            _logger.LogInformation("ItemBase GraphQL fetch started");
-            var items = await _service.FetchItemBaseAsync();
-        
-            return Ok(items); 
-        }
-        
     }
-    
+
     [ApiController]
     [Route("error")]
     public class ErrorController : ControllerBase
@@ -44,7 +45,4 @@ namespace MyApi.Controllers
             return Problem("Valami hiba történt.");
         }
     }
-    
 }
-
-
