@@ -8,7 +8,13 @@ public static class CORS
                 "AllowTarkonyFrontendOnly",
                 policy =>
                 {
-                    policy.WithOrigins("http://localhost:5173").AllowAnyHeader().AllowAnyMethod();
+                    policy
+                        .WithOrigins(
+                            "http://localhost:5173",
+                            "https://tarkony-bygtfddsfgebe5df.westeurope-01.azurewebsites.net"
+                        )
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
                 }
             );
         });

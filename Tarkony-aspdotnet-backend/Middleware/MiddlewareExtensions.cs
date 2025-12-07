@@ -5,6 +5,7 @@ public static class MiddlewareExtensions
         IWebHostEnvironment env
     )
     {
+        app.UseMiddleware<GlobalExceptionMiddleware>();
         if (env.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
@@ -13,7 +14,7 @@ public static class MiddlewareExtensions
         }
         else
         {
-            app.UseExceptionHandler("/error");
+            //app.UseExceptionHandler();
             app.UseHsts();
         }
 

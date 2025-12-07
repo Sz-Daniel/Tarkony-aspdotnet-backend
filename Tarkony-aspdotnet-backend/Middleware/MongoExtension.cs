@@ -8,7 +8,10 @@ public static class MongoExtensions
         IConfiguration config
     )
     {
-        services.Configure<MongoDBSettings>(config.GetSection("MongoDB"));
+        services
+            .AddOptions<MongoDBSettings>()
+            .Bind(config.GetSection("MongoDB"))
+            .ValidateDataAnnotations();
         services.AddScoped<MongoDBService>();
         return services;
     }

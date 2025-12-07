@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Fetch.Controllers
 {
     [ApiController]
-    [Route("fetch/[controller]")]
+    [Route("Fetch/[controller]")]
     public class FetchController : ControllerBase
     {
         private readonly GraphQLService _service;

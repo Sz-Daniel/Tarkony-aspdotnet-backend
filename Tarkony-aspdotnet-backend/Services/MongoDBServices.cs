@@ -24,11 +24,14 @@ namespace Mongo.Services
             _logger = logger;
             _service = service;
 
+            const string itemsCollection = "Items";
+            const string categoriesCollection = "Categories";
+
             MongoClient client = new MongoClient(mongoDBSettings.Value.ConnectionURI);
             IMongoDatabase database = client.GetDatabase(mongoDBSettings.Value.DatabaseName);
 
-            _itemsCollection = database.GetCollection<Items.Domain.Items>("Items");
-            _categoriesCollection = database.GetCollection<CategoryModel>("Categories");
+            _itemsCollection = database.GetCollection<Items.Domain.Items>(itemsCollection);
+            _categoriesCollection = database.GetCollection<CategoryModel>(categoriesCollection);
         }
 
         public async Task<List<CategoryModel>> GetCategoriesAsync()
@@ -89,7 +92,7 @@ namespace Mongo.Services
         }
 
         //Test
-        public async Task<List<Contracts.ItemBase.Items>> GetSearcBarhAsync(string word)
+        public async Task<List<Contracts.ItemBase.Items>> GetSearcBarAsync(string word)
         {
             var result = await _itemsCollection
                 .Find(FilterDefinition<Items.Domain.Items>.Empty)
@@ -113,7 +116,7 @@ namespace Mongo.Services
             return result;
         }
 
-        public async Task<List<BsonDocument>> GetSearcByNamehAsync(string word)
+        public async Task<List<BsonDocument>> GetSearcByNameAsync(string word)
         {
             var result = await _itemsCollection
                 .Find(x => x.name == word)
@@ -125,111 +128,83 @@ namespace Mongo.Services
         //Upload to the database
         public async Task<string> FetchCategoriesUploadAsync()
         {
-            try
+            var newCategories = await _service.FetchCategoriesAsync();
+            var models = new List<WriteModel<CategoryModel>>();
+
+            foreach (var newCategory in newCategories)
             {
-                var newCategories = await _service.FetchCategoriesAsync();
-                var models = new List<WriteModel<CategoryModel>>();
-
-                foreach (var newCategory in newCategories)
-                {
-                    var filter = Builders<CategoryModel>.Filter.Eq(x => x.Id, newCategory.Id);
-                    models.Add(
-                        new ReplaceOneModel<CategoryModel>(filter, newCategory) { IsUpsert = true }
-                    );
-                }
-
-                var result = await _categoriesCollection.BulkWriteAsync(
-                    models,
-                    new BulkWriteOptions { IsOrdered = false }
+                var filter = Builders<CategoryModel>.Filter.Eq(x => x.Id, newCategory.Id);
+                models.Add(
+                    new ReplaceOneModel<CategoryModel>(filter, newCategory) { IsUpsert = true }
                 );
-
-                _logger.LogInformation(
-                    "IsAcknowledged: {result.IsAcknowledged}",
-                    result.IsAcknowledged
-                );
-                _logger.LogInformation("MatchedCount: {result.MatchedCount}", result.MatchedCount);
-                _logger.LogInformation(
-                    "ModifiedCount: {result.ModifiedCount}",
-                    result.ModifiedCount
-                );
-                _logger.LogInformation(
-                    "InsertedCount: {result.InsertedCount}",
-                    result.InsertedCount
-                );
-                _logger.LogInformation("DeletedCount: {result.DeletedCount}", result.DeletedCount);
-
-                var dto = new
-                {
-                    IsAcknowledged = result.IsAcknowledged,
-                    MatchedCount = result.MatchedCount,
-                    ModifiedCount = result.ModifiedCount,
-                    InsertedCount = result.InsertedCount,
-                    DeletedCount = result.DeletedCount,
-                    Upserts = result.Upserts.Select(u => new { u.Index, u.Id }).ToList()
-                };
-
-                return System.Text.Json.JsonSerializer.Serialize(dto);
             }
-            catch (Exception ex)
+
+            var result = await _categoriesCollection.BulkWriteAsync(
+                models,
+                new BulkWriteOptions { IsOrdered = false }
+            );
+
+            _logger.LogInformation(
+                "IsAcknowledged: {result.IsAcknowledged}",
+                result.IsAcknowledged
+            );
+            _logger.LogInformation("MatchedCount: {result.MatchedCount}", result.MatchedCount);
+            _logger.LogInformation("ModifiedCount: {result.ModifiedCount}", result.ModifiedCount);
+            _logger.LogInformation("InsertedCount: {result.InsertedCount}", result.InsertedCount);
+            _logger.LogInformation("DeletedCount: {result.DeletedCount}", result.DeletedCount);
+
+            var dto = new
             {
-                _logger.LogError(ex, "Categories BulkWrite failed");
-                throw;
-            }
+                IsAcknowledged = result.IsAcknowledged,
+                MatchedCount = result.MatchedCount,
+                ModifiedCount = result.ModifiedCount,
+                InsertedCount = result.InsertedCount,
+                DeletedCount = result.DeletedCount,
+                Upserts = result.Upserts.Select(u => new { u.Index, u.Id }).ToList()
+            };
+
+            return System.Text.Json.JsonSerializer.Serialize(dto);
         }
 
         public async Task<string> FetchItemsUploadAsync()
         {
-            try
+            var externalItems = await _service.FetchItemsAsync();
+            var domainItems = ItemsAdapter.ToDomain(externalItems);
+            var models = new List<WriteModel<Items.Domain.Items>>();
+
+            foreach (var item in domainItems)
             {
-                var externalItems = await _service.FetchItemsAsync();
-                var domainItems = ItemsAdapter.ToDomain(externalItems);
-                var models = new List<WriteModel<Items.Domain.Items>>();
-
-                foreach (var item in domainItems)
-                {
-                    var filter = Builders<Items.Domain.Items>.Filter.Eq(x => x.id, item.id);
-                    models.Add(
-                        new ReplaceOneModel<Items.Domain.Items>(filter, item) { IsUpsert = true }
-                    );
-                }
-
-                var result = await _itemsCollection.BulkWriteAsync(
-                    models,
-                    new BulkWriteOptions { IsOrdered = false }
+                var filter = Builders<Items.Domain.Items>.Filter.Eq(x => x.id, item.id);
+                models.Add(
+                    new ReplaceOneModel<Items.Domain.Items>(filter, item) { IsUpsert = true }
                 );
-
-                _logger.LogInformation(
-                    "IsAcknowledged: {result.IsAcknowledged}",
-                    result.IsAcknowledged
-                );
-                _logger.LogInformation("MatchedCount: {result.MatchedCount}", result.MatchedCount);
-                _logger.LogInformation(
-                    "ModifiedCount: {result.ModifiedCount}",
-                    result.ModifiedCount
-                );
-                _logger.LogInformation(
-                    "InsertedCount: {result.InsertedCount}",
-                    result.InsertedCount
-                );
-                _logger.LogInformation("DeletedCount: {result.DeletedCount}", result.DeletedCount);
-
-                var dto = new
-                {
-                    IsAcknowledged = result.IsAcknowledged,
-                    MatchedCount = result.MatchedCount,
-                    ModifiedCount = result.ModifiedCount,
-                    InsertedCount = result.InsertedCount,
-                    DeletedCount = result.DeletedCount,
-                    Upserts = result.Upserts.Select(u => new { u.Index, u.Id }).ToList()
-                };
-
-                return System.Text.Json.JsonSerializer.Serialize(dto);
             }
-            catch (Exception ex)
+
+            var result = await _itemsCollection.BulkWriteAsync(
+                models,
+                new BulkWriteOptions { IsOrdered = false }
+            );
+
+            _logger.LogInformation(
+                "IsAcknowledged: {result.IsAcknowledged}",
+                result.IsAcknowledged
+            );
+            _logger.LogInformation("MatchedCount: {result.MatchedCount}", result.MatchedCount);
+            _logger.LogInformation("ModifiedCount: {result.ModifiedCount}", result.ModifiedCount);
+            _logger.LogInformation("InsertedCount: {result.InsertedCount}", result.InsertedCount);
+            _logger.LogInformation("DeletedCount: {result.DeletedCount}", result.DeletedCount);
+
+            var dto = new
             {
-                _logger.LogError(ex, "Categories BulkWrite failed");
-                throw;
-            }
+                IsAcknowledged = result.IsAcknowledged,
+                MatchedCount = result.MatchedCount,
+                ModifiedCount = result.ModifiedCount,
+                InsertedCount = result.InsertedCount,
+                DeletedCount = result.DeletedCount,
+                Upserts = result.Upserts.Select(u => new { u.Index, u.Id }).ToList()
+            };
+
+            return System.Text.Json.JsonSerializer.Serialize(dto);
         }
     }
 }

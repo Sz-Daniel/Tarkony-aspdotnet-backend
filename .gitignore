@@ -7,3 +7,11 @@ cheatsheet.md
 MyRequest.http
 
 Tarkony-aspdotnet-backend/.config
+
+Tarkony-aspdotnet-backend/bin
+
+Tarkony-aspdotnet-backend/obj
+
+Tarkony-aspdotnet-backend/MyRequest.http
+
+Tarkony-aspdotnet-backend/appsettings.Development.json

@@ -3,7 +3,7 @@ using Mongo.Services;
 
 namespace Mongo.Controllers;
 
-[Controller]
+[ApiController]
 [Route("Mongo/[controller]")]
 public class MongoController : Controller
 {
@@ -17,44 +17,21 @@ public class MongoController : Controller
     [HttpGet("SearchItemByName")]
     public async Task<IActionResult> SearchItemByName([FromRoute] string name)
     {
-        try
-        {
-            var result = await _mongoDBService.GetSearcByNamehAsync(name);
-            return Ok(result);
-        }
-        catch (Exception ex)
-        {
-            return StatusCode(500, new { error = ex.Message });
-        }
+        var result = await _mongoDBService.GetSearcByNameAsync(name);
+        return Ok(result);
     }
 
     [HttpGet("ForceCategoriesDump")]
     public async Task<IActionResult> ForceCategoriesDump()
     {
-        try
-        {
-            var result = await _mongoDBService.FetchCategoriesUploadAsync();
-            return Created("api/items/ForceCategoriesDump", result);
-        }
-        catch (Exception ex)
-        {
-            // 500 Internal Server Error
-            return StatusCode(500, new { error = ex.Message });
-        }
+        var result = await _mongoDBService.FetchCategoriesUploadAsync();
+        return Created("api/items/ForceCategoriesDump", result);
     }
 
     [HttpGet("ForceItemsDump")]
     public async Task<IActionResult> FetchItemsDump()
     {
-        try
-        {
-            var result = await _mongoDBService.FetchItemsUploadAsync();
-            return Created("api/items/ForceItemsDump", result);
-        }
-        catch (Exception ex)
-        {
-            // 500 Internal Server Error
-            return StatusCode(500, new { error = ex.Message });
-        }
+        var result = await _mongoDBService.FetchItemsUploadAsync();
+        return Created("api/items/ForceItemsDump", result);
     }
 }

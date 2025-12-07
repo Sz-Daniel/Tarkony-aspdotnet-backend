@@ -1,0 +1,16 @@
+2025-12-07 16:41:01.488 +01:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2025-12-07 16:41:01.519 +01:00 [INF] Quartz Scheduler created
+2025-12-07 16:41:01.520 +01:00 [INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2025-12-07 16:41:01.520 +01:00 [INF] RAMJobStore initialized.
+2025-12-07 16:41:01.520 +01:00 [INF] Quartz Scheduler 3.15.1.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2025-12-07 16:41:01.520 +01:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2025-12-07 16:41:01.521 +01:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2025-12-07 16:41:01.531 +01:00 [INF] Adding 0 jobs, 0 triggers.
+2025-12-07 16:41:01.612 +01:00 [INF] Now listening on: http://localhost:5128
+2025-12-07 16:41:01.613 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-07 16:41:01.613 +01:00 [INF] Hosting environment: Development
+2025-12-07 16:41:01.613 +01:00 [INF] Content root path: D:\repo\Tarkony\Tarkony-aspdotnet-backend\Tarkony-aspdotnet-backend
+2025-12-07 16:41:01.617 +01:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2025-12-07 16:41:01.799 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5128/ - null null
+2025-12-07 16:41:01.902 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5128/ - 404 null null 106.1067ms
+2025-12-07 16:41:01.907 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5128/, Response status code: 404

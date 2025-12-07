@@ -1,9 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using Mongo.Services;
 
 namespace Frontend.Controllers;
 
-[Controller]
+[ApiController]
 [Route("api/[controller]")]
 public class FrontendController : Controller
 {
@@ -14,46 +15,27 @@ public class FrontendController : Controller
         _mongoDBService = mongoDBService;
     }
 
+    [EnableRateLimiting("frontend")]
     [HttpGet("Categories")]
     public async Task<IActionResult> GetCategories()
     {
-        try
-        {
-            var result = await _mongoDBService.GetCategoriesAsync();
-            return Ok(result);
-        }
-        catch (Exception ex)
-        {
-            return StatusCode(500, new { error = ex.Message });
-        }
+        var result = await _mongoDBService.GetCategoriesAsync();
+        return Ok(result);
     }
 
+    [EnableRateLimiting("frontend")]
     [HttpGet("ItemBase")]
     public async Task<IActionResult> GetItemBase()
     {
-        try
-        {
-            var result = await _mongoDBService.GetItemBaseAsync();
-            return Ok(result);
-        }
-        catch (Exception ex)
-        {
-            return StatusCode(500, new { error = ex.Message });
-        }
+        var result = await _mongoDBService.GetItemBaseAsync();
+        return Ok(result);
     }
 
+    [EnableRateLimiting("frontend")]
     [HttpGet("ItemDetail/{id}")]
     public async Task<IActionResult> GetItemDetail([FromRoute] string id)
     {
-        try
-        {
-            var result = await _mongoDBService.GetItemDetailAsync(id);
-            return Ok(result);
-        }
-        catch (Exception ex)
-        {
-            // 500 Internal Server Error
-            return StatusCode(500, new { error = ex.Message });
-        }
+        var result = await _mongoDBService.GetItemDetailAsync(id);
+        return Ok(result);
     }
 }
