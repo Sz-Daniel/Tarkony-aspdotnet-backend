@@ -1,19 +1,25 @@
-# 
-bin/
-obj/
-.config/
-
-# 
-*.env
-cheatsheet.md
-MyRequest.http
-
-# 
-Tarkony-aspdotnet-backend/.config/
+# --- Build output ---
 Tarkony-aspdotnet-backend/bin/
 Tarkony-aspdotnet-backend/obj/
-Tarkony-aspdotnet-backend/MyRequest.http
-Tarkony-aspdotnet-backend/appsettings.Development.json
 
-# 
+# --- Config és környezeti fájlok ---
+Tarkony-aspdotnet-backend/.config/
+Tarkony-aspdotnet-backend/appsettings.Development.json
+*.env
+
+# --- Projekt gyökér ---
+/Tarkony-aspdotnet-backend/
+
+# --- Egyedi fájlok ---
+cheatsheet.md
+MyRequest.http
+Tarkony-aspdotnet-backend/MyRequest.http
+
+# --- IDE / Editor beállítások ---
+.vscode
+
+# --- Logok ---
+Tarkony-aspdotnet-backend/logs/
+
+# --- Egyéb ---
 /junk/

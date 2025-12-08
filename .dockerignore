@@ -1,34 +1,34 @@
+# --- Projekt specifikus fájlok ---
+Tarkony-aspdotnet-backend/appsettings.json
+Tarkony-aspdotnet-backend/appsettings.Development.json
+Tarkony-aspdotnet-backend/Properties/launchSettings.json   # csak fejlesztéshez kell
+
+# --- Controllers (csak bizonyos fájlok) ---
 Tarkony-aspdotnet-backend/Controllers/FetchController.cs
 Tarkony-aspdotnet-backend/Controllers/MongoController.cs
 Tarkony-aspdotnet-backend/Controllers/QuartzController.cs
-Tarkony-aspdotnet-backend\appsettings.Development.json
 
+# --- Build output ---
+Tarkony-aspdotnet-backend/bin/
+Tarkony-aspdotnet-backend/obj/
+Tarkony-aspdotnet-backend/logs/
 
-# Build output
-bin/
-obj/
-
-# User-specific files
-*.user
-*.suo
-*.swp
-*.tmp
-
-# IDE settings
+# --- IDE és editor beállítások ---
+Tarkony-aspdotnet-backend/.vs/
+Tarkony-aspdotnet-backend/vscode/
 .vscode/
 .idea/
 *.csproj.user
 
-# Git
+# --- Git ---
+Tarkony-aspdotnet-backend/.git/
+Tarkony-aspdotnet-backend/.gitignore
 .git/
 .gitignore
 
-# Logs
-*.log
-
-# Docker files (ha több van)
-docker-compose.override.yml
+# --- Docker fájlok ---
 .dockerignore
+docker-compose.override.yml
 
-# Test projects
+# --- Teszt projektek ---
 tests/

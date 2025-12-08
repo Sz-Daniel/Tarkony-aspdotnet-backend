@@ -3,15 +3,24 @@ using GraphQL;
 
 public static class GraphQLExtension
 {
-    public static IServiceCollection AddGraphQL(this IServiceCollection services)
+    public static IServiceCollection AddGraphQL(
+        this IServiceCollection services,
+        IConfiguration config
+    )
     {
+        var apiUrl = config["THIRDPARTY:API"];
+        if (string.IsNullOrEmpty(apiUrl))
+            throw new InvalidOperationException(
+                "THIRDPARTY__API environment variable must be set."
+            );
+
         services.AddTransient<RetryHandler>();
         services
             .AddHttpClient(
                 "GraphQLClient",
                 client =>
                 {
-                    client.BaseAddress = new Uri("https://api.tarkov.dev/graphql");
+                    client.BaseAddress = new Uri(apiUrl);
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.Timeout = TimeSpan.FromSeconds(30);
                 }

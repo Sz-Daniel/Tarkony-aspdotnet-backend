@@ -16,14 +16,15 @@ RUN dotnet publish -c Release -o /app
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 
-
 COPY --from=build /app ./
 EXPOSE 80
 
-# Itt állítod át, hogy a 80‑as porton induljon
 ENV ASPNETCORE_URLS=http://+:80
 ENV ASPNETCORE_ENVIRONMENT=Production
-ENV MongoDB__ConnectionURI=mongodb+srv://demo_user:Ylugd4eYGYci4AZp@cluster0.fva9gn7.mongodb.net/
+ENV MongoDB__ConnectionURI=mongodb+srv://demo_user:ZqtMZnbTIJO1JrZ4@cluster0.fva9gn7.mongodb.net/
 ENV MongoDB__DatabaseName=tarkony_asp
 ENV MongoDB__CollectionName=items_data
+ENV THIRDPARTYAPI__URL=https://api.tarkov.dev/graphql
+ENV FRONTEND__URL=https://tarkony-bygtfddsfgebe5df.westeurope-01.azurewebsites.net
+ENV CORS__AllowedOrigins=https://tarkony-bygtfddsfgebe5df.westeurope-01.azurewebsites.net
 ENTRYPOINT ["dotnet", "Tarkony-aspdotnet-backend.dll"]
