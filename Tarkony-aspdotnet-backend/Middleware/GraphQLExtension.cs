@@ -8,7 +8,7 @@ public static class GraphQLExtension
         IConfiguration config
     )
     {
-        var apiUrl = config["THIRDPARTY:API"];
+        var apiUrl = config["THIRDPARTYAPI:URL"];
         if (string.IsNullOrEmpty(apiUrl))
             throw new InvalidOperationException(
                 "THIRDPARTY__API environment variable must be set."

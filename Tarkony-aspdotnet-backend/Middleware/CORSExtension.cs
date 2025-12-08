@@ -5,21 +5,37 @@ public static class CORS
         IWebHostEnvironment env
     )
     {
-        services.AddCors(options =>
+        if (env.IsDevelopment())
         {
-            options.AddPolicy(
-                "ProdCors",
-                policy =>
-                {
-                    policy
-                        .WithOrigins(
-                            "https://tarkony-bygtfddsfgebe5df.westeurope-01.azurewebsites.net"
-                        )
-                        .AllowAnyHeader()
-                        .AllowAnyMethod();
-                }
-            );
-        });
+            services.AddCors(options =>
+            {
+                options.AddPolicy(
+                    "DevCors",
+                    policy =>
+                    {
+                        policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+                    }
+                );
+            });
+        }
+        else
+        {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(
+                    "ProdCors",
+                    policy =>
+                    {
+                        policy
+                            .WithOrigins(
+                                "https://tarkony-bygtfddsfgebe5df.westeurope-01.azurewebsites.net"
+                            )
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                    }
+                );
+            });
+        }
 
         return services;
     }

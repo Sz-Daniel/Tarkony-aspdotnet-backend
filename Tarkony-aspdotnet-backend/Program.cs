@@ -5,10 +5,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddRateLimiterExtension();
 
-var connectionUri = builder.Configuration["MongoDB:ConnectionURI"];
-var dbName = builder.Configuration["MongoDB:DatabaseName"];
-var collectionName = builder.Configuration["MongoDB:CollectionName"];
-
 builder.Services.AddGraphQL(builder.Configuration);
 
 builder.Services.AddMongo(builder.Configuration);
@@ -37,7 +33,14 @@ else
 }
 
 app.UseRouting();
-app.UseCors("ProdCors");
+if (builder.Environment.IsDevelopment())
+{
+    app.UseCors("DevCors");
+}
+else
+{
+    app.UseCors("ProdCors");
+}
 
 app.UseRateLimiter();
 app.UseAuthentication();

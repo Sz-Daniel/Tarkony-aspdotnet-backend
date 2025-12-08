@@ -2,6 +2,7 @@
 Tarkony-aspdotnet-backend/bin/
 Tarkony-aspdotnet-backend/obj/
 
+
 # --- Config és környezeti fájlok ---
 Tarkony-aspdotnet-backend/.config/
 Tarkony-aspdotnet-backend/appsettings.Development.json
@@ -23,3 +24,5 @@ Tarkony-aspdotnet-backend/logs/
 
 # --- Egyéb ---
 /junk/
+
+Dockerfile
