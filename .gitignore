@@ -2,14 +2,12 @@
 Tarkony-aspdotnet-backend/bin/
 Tarkony-aspdotnet-backend/obj/
 
-
 # --- Config és környezeti fájlok ---
 Tarkony-aspdotnet-backend/.config/
 Tarkony-aspdotnet-backend/appsettings.Development.json
+Tarkony-aspdotnet-backend/appsettings.json
+Tarkony-aspdotnet-backend/bin/Debug/net8.0/appsettings.json
 *.env
-
-# --- Projekt gyökér ---
-/Tarkony-aspdotnet-backend/
 
 # --- Egyedi fájlok ---
 cheatsheet.md
@@ -17,7 +15,7 @@ MyRequest.http
 Tarkony-aspdotnet-backend/MyRequest.http
 
 # --- IDE / Editor beállítások ---
-.vscode
+.vscode/
 
 # --- Logok ---
 Tarkony-aspdotnet-backend/logs/
@@ -25,4 +23,5 @@ Tarkony-aspdotnet-backend/logs/
 # --- Egyéb ---
 /junk/
 
+# --- Docker ---
 Dockerfile

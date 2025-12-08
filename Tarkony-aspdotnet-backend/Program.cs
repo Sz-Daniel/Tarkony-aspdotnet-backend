@@ -48,5 +48,6 @@ app.UseAuthorization();
 app.UseLoggerExtension(); // log + traceId
 app.MapControllers();
 app.MapHealthChecks("/health");
+app.MapGet("/", () => "API is running");
 
 app.Run();
