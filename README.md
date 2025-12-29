@@ -1,5 +1,9 @@
 # ASP.NET Core Backend
 
+~~[Azure](https://tarkony-asp-aqa9axgghrdmb0cx.westeurope-01.azurewebsites.net/health)~~
+
+Temporary offline
+
 ---
 
 ## Project Goal
@@ -13,7 +17,7 @@ This backend layer reads data from a 3rd party **GraphQL API** (Tarkov.dev), sto
 - Deploy
 - Further expansion of Error
 - Further expansion of Logging
-- Adapter fixing
+- Adapter fixing + extend it by transferring the frontend-rendered data
 - Documentation
 - ItemsPrice: Create a Quary and DTO, Upload into Items - Refresh the item's price
 - Log db collection
@@ -68,13 +72,13 @@ This backend layer reads data from a 3rd party **GraphQL API** (Tarkov.dev), sto
 ├── Services/
 │   ├── GraphQLService.cs // integration with Tarkov.dev GraphQL API
 │   ├── MongoDBServices.cs // NoSQL, bulk data for frontend rendering only
-│   └── QuartzServices.cs //Időzítések az itemek árai frissítéséhez és itemek adatainak a frissítéséhez az adatbázisba.
+│   └── QuartzServices.cs //Schedules for updating item prices and item data in the database.
 ├── Models/
 │   ├── Adapters/
 │   │   └── ItemsAdapter.cs
 │   └── DataModels/ //External and Domain models
-│   │   ├── Contracts.cs //Model for data select queries
-│   │   └── ItemsModel.cs
+│       ├── Contracts.cs //Model for data select queries
+│       └── ItemsModel.cs
 └── Properties/launchSettings.json
 ```
 
@@ -106,5 +110,5 @@ dotnet run --project Tarkony-aspdotnet-backend/Tarkony-aspdotnet-backend.csproj
 4. Open Swagger UI (in developer environment):
 
 ```
-http://localhost:5128/swagger/
+.../swagger/
 ```
