@@ -33,6 +33,14 @@ namespace Fetch.Controllers
             var items = await _service.FetchCategoriesAsync();
             return Ok(items);
         }
+
+        [HttpGet("Status")]
+        public async Task<IActionResult> GetStatusData()
+        {
+            _logger.LogInformation("Status GraphQL fetch started");
+            var status = await _service.FetchAPIStatusAsync();
+            return Ok(status);
+        }
     }
 
     [ApiController]

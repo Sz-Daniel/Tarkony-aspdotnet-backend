@@ -4,7 +4,37 @@
 
 Temporary offline
 
+# HR Section
+
+## Project Summary
+
+This project is a .NET BaaS (Backend-as-a-Service) backend supporting a data-driven React frontend. Its primary purpose is to provide fast and reliable access to game item data through centralized APIs, reducing direct load on third-party data sources. The system ensures data is consistently available, improves performance, and simplifies frontend data consumption.
+
+Tech stack: ASP.NET, MongoDB, MSSQL(in progress), REST API, GraphQL
+
+### Next Steps:
+
+Introduce MSSQL database for user management, enabling authentication and personalized features.
+
+Optimize data loading and caching for even faster frontend responses.
+
+### Done:
+
+Implemented backend services delivering item data to the existing frontend, following clear and maintainable architecture principles.
+
+Ensured backend handles data retrieval from a third-party source efficiently, providing fallback mechanisms to maintain uninterrupted service.
+
+### Impact:
+
+Reduces direct load on external APIs
+
+Improves frontend performance and reliability
+
+Provides a scalable foundation for further feature development
+
 ---
+
+# Technical section
 
 ## Project Goal
 
@@ -52,9 +82,10 @@ This backend layer reads data from a 3rd party **GraphQL API** (Tarkov.dev), sto
 
 #### REST API endpoints – search, prices, barter information
 
-#### First deploy – Azure App Service (with free tier options)
+####
 
-- User management – ASP.NET Identity, JWT tokens, role-based access
+- User management – MSSQL
+- Redis
 - Shopping list feature – user saves with price/barter snapshots
 
 ---

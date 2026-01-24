@@ -5,7 +5,6 @@ Tarkony-aspdotnet-backend/obj/
 # --- Config és környezeti fájlok ---
 Tarkony-aspdotnet-backend/.config/
 Tarkony-aspdotnet-backend/appsettings.Development.json
-Tarkony-aspdotnet-backend/appsettings.json
 Tarkony-aspdotnet-backend/bin/Debug/net8.0/appsettings.json
 *.env
 
@@ -25,3 +24,5 @@ Tarkony-aspdotnet-backend/logs/
 
 # --- Docker ---
 Dockerfile
+
+.fake

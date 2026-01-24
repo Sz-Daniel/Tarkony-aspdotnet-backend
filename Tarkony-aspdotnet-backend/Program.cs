@@ -42,6 +42,7 @@ else
     app.UseCors("ProdCors");
 }
 
+app.UseCors();
 app.UseRateLimiter();
 app.UseAuthentication();
 app.UseAuthorization();

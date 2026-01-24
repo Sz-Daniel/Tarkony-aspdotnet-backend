@@ -5,6 +5,7 @@ public static class CORS
         IWebHostEnvironment env
     )
     {
+        Console.WriteLine($"ENV: {env.EnvironmentName}");
         if (env.IsDevelopment())
         {
             services.AddCors(options =>

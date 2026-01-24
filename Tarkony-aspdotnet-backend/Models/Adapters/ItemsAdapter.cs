@@ -5,6 +5,7 @@ using Items.Domain;
 using Items.External;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using Microsoft.VisualBasic;
+using MongoDB.Driver;
 
 namespace Items.Adapter
 {
@@ -29,6 +30,11 @@ namespace Items.Adapter
                 bestBuy = BestBuy(buyList),
                 changePrice = D(src?.ChangeLast48h),
                 changePercent = D(src?.ChangeLast48hPercent),
+                historicalPrices = (
+                    src?.HistoricalPrices ?? new List<Items.External.HistoricalPrices>()
+                )
+                    .Select(MapPrices)
+                    .ToList(),
                 category = S(src?.Category?.NormalizedName),
                 normalizedName = S(src?.NormalizedName),
                 wiki = S(src?.WikiLink),
@@ -97,6 +103,18 @@ namespace Items.Adapter
                 : new PriceDeal { price = (int)D(best.PriceRUB), place = S(best.Vendor?.Name) };
         }
 
+        // --- Price History ---
+
+        private static Domain.HistoricalPrices MapPrices(Items.External.HistoricalPrices hp) =>
+            new Domain.HistoricalPrices
+            {
+                offerCount = I(hp?.OfferCount),
+                offerCountMin = I(hp?.OfferCountMin),
+                price = I(hp?.Price),
+                priceMin = I(hp?.PriceMin),
+                timestamp = S(hp?.Timestamp)
+            };
+
         // --- Barter ---
 
         private static Domain.Barter MapBarter(Items.External.Barter b) =>
@@ -115,8 +133,6 @@ namespace Items.Adapter
             };
 
         // --- Craft ---
-
-
 
         private static Domain.Craft MapCraft(Items.External.Craft c) =>
             new Domain.Craft

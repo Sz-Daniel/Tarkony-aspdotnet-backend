@@ -18,6 +18,7 @@ namespace Items
             public string category { get; set; }
             public string normalizedName { get; set; }
             public string wiki { get; set; }
+            public List<HistoricalPrices> historicalPrices { get; set; }
             public List<SellTo> sellTo { get; set; }
             public List<BuyFrom> buyFrom { get; set; }
             public List<Barter> barterInput { get; set; }
@@ -26,6 +27,15 @@ namespace Items
             public List<Craft> craftOutput { get; set; }
             public List<TaskNeed>? taskNeed { get; set; }
             public List<TaskGive>? taskGive { get; set; }
+        }
+
+        public class HistoricalPrices
+        {
+            public int offerCount { get; set; }
+            public int offerCountMin { get; set; }
+            public int price { get; set; }
+            public int priceMin { get; set; }
+            public string timestamp { get; set; }
         }
 
         public class TaskGive
@@ -171,6 +181,7 @@ namespace Items
             [BsonRepresentation(BsonType.String)]
             public string WikiLink { get; set; }
             public Category Category { get; set; }
+            public List<HistoricalPrices> HistoricalPrices { get; set; }
             public List<Sell> SellFor { get; set; }
             public List<Buy> BuyFor { get; set; }
             public List<Barter> BartersUsing { get; set; }
@@ -178,6 +189,15 @@ namespace Items
             public List<Craft> CraftsUsing { get; set; }
             public List<Craft> CraftsFor { get; set; }
             public List<Task> UsedInTasks { get; set; }
+        }
+
+        public class HistoricalPrices
+        {
+            public int OfferCount { get; set; }
+            public int OfferCountMin { get; set; }
+            public int Price { get; set; }
+            public int PriceMin { get; set; }
+            public string Timestamp { get; set; }
         }
 
         public class Category
