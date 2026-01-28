@@ -10,17 +10,17 @@ Online
 
 This project is a .NET BaaS (Backend-as-a-Service) backend supporting a data-driven React frontend. Its primary purpose is to provide fast and reliable access to game item data through centralized APIs, reducing direct load on third-party data sources. The system ensures data is consistently available, improves performance, and simplifies frontend data consumption.
 
-Tech stack: ASP.NET, MongoDB, REST API, GraphQL
+Tech stack: ASP.NET, MongoDB, REST API, GraphQL, SQL Server (MSSQL) In progress
 
 ### Next Steps:
+
+Introduce MSSQL database for user management, enabling authentication and personalized features.
+
+### Next:
 
 Introduction to Redis: Accelerating front-end API requests with cached database queries.
 
 Optimize data loading and caching for even faster frontend responses.
-
-### Next:
-
-Introduce MSSQL database for user management, enabling authentication and personalized features.
 
 ### Done:
 
