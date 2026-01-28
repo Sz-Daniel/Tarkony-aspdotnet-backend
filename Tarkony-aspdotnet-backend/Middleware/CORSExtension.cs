@@ -2,10 +2,12 @@ public static class CORS
 {
     public static IServiceCollection AddCorsPolicy(
         this IServiceCollection services,
-        IWebHostEnvironment env
+        IWebHostEnvironment env,
+        IConfiguration config
     )
     {
-        Console.WriteLine($"ENV: {env.EnvironmentName}");
+        var frontend = config["FRONTEND"];
+        Console.WriteLine($"ENV: {env.EnvironmentName} FRONTEND: {frontend}");
         if (env.IsDevelopment())
         {
             services.AddCors(options =>
@@ -27,12 +29,14 @@ public static class CORS
                     "ProdCors",
                     policy =>
                     {
-                        policy
-                            .WithOrigins(
-                                "https://tarkony-bygtfddsfgebe5df.westeurope-01.azurewebsites.net"
-                            )
-                            .AllowAnyHeader()
-                            .AllowAnyMethod();
+                        policy.WithOrigins(frontend).AllowAnyHeader().AllowAnyMethod();
+                    }
+                );
+                options.AddPolicy(
+                    "PublicAPI",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
                     }
                 );
             });

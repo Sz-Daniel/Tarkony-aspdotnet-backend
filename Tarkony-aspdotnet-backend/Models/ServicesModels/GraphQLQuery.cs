@@ -16,17 +16,7 @@ namespace GraphQL
             {
                 //Query = queries["ItemsQuery"];
                 {
-                    "APIStatusQuery",
-                    @"query {
-                        status {
-                        currentStatuses { message name status statusCode }
-                        generalStatus { message name status statusCode }
-                        messages { content solveTime statusCode time type }
-                        }
-                    }"
-                },
-                {
-                    "APIStatusQuery",
+                    "OriginStatusQuery",
                     @"query {
                         status {
                         currentStatuses { message name status statusCode }
@@ -44,6 +34,58 @@ namespace GraphQL
                             normalizedName
                             children { normalizedName }
                             parent { normalizedName }
+                        }
+                    }"
+                },
+                {
+                    "ItemsPriceJob",
+                    @"query {
+                        items {
+                            id
+                            sellFor {
+                            currency
+                            price
+                            priceRUB
+                            vendor {
+                                name
+                                ... on FleaMarket {
+                                foundInRaidRequired
+                                }
+                            }
+                            }
+                            buyFor {
+                            currency
+                            price
+                            priceRUB
+                            vendor {
+                                name
+                                ... on TraderOffer {
+                                minTraderLevel
+                                buyLimit
+                                trader {
+                                    name
+                                    imageLink
+                                    levels {
+                                    level
+                                    requiredPlayerLevel
+                                    requiredReputation
+                                    requiredCommerce
+                                    }
+                                }
+                                taskUnlock {
+                                    name
+                                    minPlayerLevel
+                                }
+                                }
+                            }
+                            }
+                            historicalPrices {
+                            offerCount
+                            offerCountMin
+                            price
+                            priceMin
+                            timestamp
+                            }
                         }
                     }"
                 },

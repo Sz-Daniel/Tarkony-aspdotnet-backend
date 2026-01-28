@@ -11,7 +11,7 @@ builder.Services.AddMongo(builder.Configuration);
 
 //builder.Services.AddQuartzJobs();
 
-builder.Services.AddCorsPolicy(builder.Environment);
+builder.Services.AddCorsPolicy(builder.Environment, builder.Configuration);
 
 //builder.Services.AddJWTAuth();
 builder.Services.AddHealthChecks();
@@ -42,7 +42,6 @@ else
     app.UseCors("ProdCors");
 }
 
-app.UseCors();
 app.UseRateLimiter();
 app.UseAuthentication();
 app.UseAuthorization();
