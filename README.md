@@ -8,7 +8,6 @@ Hosted live on MonsterASP.NET
 
 This project is a .NET BaaS (Backend-as-a-Service) backend supporting a data-driven React frontend. Its primary purpose is to provide fast and reliable access to game item data through centralized APIs, reducing direct load on third-party data sources. The system ensures data is consistently available, improves performance, and simplifies frontend data consumption.
 
-<<<<<<< HEAD
 Tech Stack: ASP.NET Core (C#, .NET 8), REST API + Swagger, MongoDB, Third-Party GraphQL Integration
 
 Core Competencies: API Architectures (GraphQL to REST), Data Transformation (DTO / Adapter), NoSQL Persistence, Service-Oriented Development, Performance & Scalability, Reliability & Error Handling, Clean Code & Design Principles (Separation of Concerns)
@@ -16,25 +15,13 @@ Core Competencies: API Architectures (GraphQL to REST), Data Transformation (DTO
 ### Next Steps:
 
 Quartz: Data remodeling, database structure updates, and configuring scheduled jobs
-=======
-Tech stack: ASP.NET, MongoDB, REST API, GraphQL, SQL Server (MSSQL) In progress
-
-### Next Steps:
-
-Introduce MSSQL database for user management, enabling authentication and personalized features.
-
-### Next:
->>>>>>> 031b67f4d1f8fdaa2af56d94f9064ec4e97ed6f2
 
 Introduction to Redis: Accelerating front-end API requests with cached database queries.
 
 Optimize data loading and caching for even faster frontend responses.
 
-<<<<<<< HEAD
 Introduce MSSQL database for user management, enabling authentication and personalized features.
 
-=======
->>>>>>> 031b67f4d1f8fdaa2af56d94f9064ec4e97ed6f2
 ### Done:
 
 Implemented backend services delivering item data to the existing frontend, following clear and maintainable architecture principles.
