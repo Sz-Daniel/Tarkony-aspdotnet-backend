@@ -1,8 +1,6 @@
 # ASP.NET Core Backend
 
-~~[Azure](https://tarkony-asp-aqa9axgghrdmb0cx.westeurope-01.azurewebsites.net/health)~~
-
-Online
+Hosted live on MonsterASP.NET
 
 # HR Section
 
@@ -10,23 +8,23 @@ Online
 
 This project is a .NET BaaS (Backend-as-a-Service) backend supporting a data-driven React frontend. Its primary purpose is to provide fast and reliable access to game item data through centralized APIs, reducing direct load on third-party data sources. The system ensures data is consistently available, improves performance, and simplifies frontend data consumption.
 
-Tech stack: ASP.NET, MongoDB, REST API, GraphQL
+Tech Stack: ASP.NET Core (C#, .NET 8), REST API + Swagger, MongoDB, Third-Party GraphQL Integration
+
+Core Competencies: API Architectures (GraphQL to REST), Data Transformation (DTO / Adapter), NoSQL Persistence, Service-Oriented Development, Performance & Scalability, Reliability & Error Handling, Clean Code & Design Principles (Separation of Concerns)
 
 ### Next Steps:
+
+Quartz: Data remodeling, database structure updates, and configuring scheduled jobs
 
 Introduction to Redis: Accelerating front-end API requests with cached database queries.
 
 Optimize data loading and caching for even faster frontend responses.
-
-### Next:
 
 Introduce MSSQL database for user management, enabling authentication and personalized features.
 
 ### Done:
 
 Implemented backend services delivering item data to the existing frontend, following clear and maintainable architecture principles.
-
-Ensured backend handles data retrieval from a third-party source efficiently, providing fallback mechanisms to maintain uninterrupted service.
 
 ### Impact:
 
@@ -46,29 +44,10 @@ This backend layer reads data from a 3rd party **GraphQL API** (Tarkov.dev), sto
 
 ---
 
-## Next Task
-
-- Deploy
-- Further expansion of Error
-- Further expansion of Logging
-- Adapter fixing + extend it by transferring the frontend-rendered data
-- Documentation
-- ItemsPrice: Create a Quary and DTO, Upload into Items - Refresh the item's price
-- Log db collection
-- Quartz timing for frefres the Item Price and Item data into database
-- GraphQL.FetchAPIStatusAsync: Generate DTO from APIStatusQuery, Create API Controller to GET the API status.
-- ItemSingle: Create DTO from Query and From Frontend Typescript, Adapter, Upload
-- Batching upload insteand bulk
-- Status page for backend
-- Refactor (+ Domain Pacalcase with JsonPropertyName)
-- Deploy End of Stage 2
-
----
-
 ## Architecture Overview
 
 - **Backend:** ASP.NET Core Web API
-- **Data Source:** 3rd party GraphQL endpoint
+- **Data Source:** 3rd party Origin GraphQL endpoint
 - **Adapter Layer:** GraphQL + external model -> adapter → domain model
 - **Persistence:** Mongo Atlas DB (NoSQL documents)
 - **Schesuled Jobs** Quartz
@@ -86,11 +65,8 @@ This backend layer reads data from a 3rd party **GraphQL API** (Tarkov.dev), sto
 
 #### REST API endpoints – search, prices, barter information
 
-####
-
-- User management – MSSQL
 - Redis
-- Shopping list feature – user saves with price/barter snapshots
+- Shopping list feature with MSSQL – user saves the price/barter favourites
 
 ---
 
@@ -98,23 +74,20 @@ This backend layer reads data from a 3rd party **GraphQL API** (Tarkov.dev), sto
 
 ```
 /src
-├── Program.cs
 ├── Controllers/
 │   ├── FrontendController.cs //Queries from database for Frontend
 │   ├── FetchController.cs //Query from Thirdparty API
-│   ├── MongoController.cs //Query and mutation from Database
-│   └── QuartzController.cs
+│   └── MongoController.cs //Query and mutation from Database
 ├── Services/
 │   ├── GraphQLService.cs // integration with Tarkov.dev GraphQL API
-│   ├── MongoDBServices.cs // NoSQL, bulk data for frontend rendering only
-│   └── QuartzServices.cs //Schedules for updating item prices and item data in the database.
+│   └── MongoDBServices.cs // NoSQL, bulk data for frontend rendering only
 ├── Models/
 │   ├── Adapters/
 │   │   └── ItemsAdapter.cs
 │   └── DataModels/ //External and Domain models
 │       ├── Contracts.cs //Model for data select queries
 │       └── ItemsModel.cs
-└── Properties/launchSettings.json
+└── Program.cs
 ```
 
 ---
@@ -125,7 +98,7 @@ This backend layer reads data from a 3rd party **GraphQL API** (Tarkov.dev), sto
 
 ```powershell
 git clone https://github.com/Sz-Daniel/Tarkony-aspdotnet-backend/
-cd Tarkony-aspdotnet-backend
+cd Tarkony-aspdotnet-backend/Tarkony-aspdotnet-backend
 
 ```
 
@@ -147,3 +120,5 @@ dotnet run --project Tarkony-aspdotnet-backend/Tarkony-aspdotnet-backend.csproj
 ```
 .../swagger/
 ```
+
+---
